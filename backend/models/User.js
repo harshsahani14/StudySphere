@@ -41,8 +41,13 @@ const UserSchema = new mongoose.Schema({
     courseProgess:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"CoursesProgress"
-    }]
-
+    }],
+    token:{
+        type:String
+    },
+    expiresIn:{
+        type:Date
+    }
 })
 
 module.exports = mongoose.Model("User",UserSchema);
