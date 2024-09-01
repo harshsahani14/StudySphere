@@ -11,7 +11,7 @@ const CourseSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    WhatYouWillLearn:{
+    whatYouWillLearn:{
         type:String,
         required:true
     },
@@ -50,7 +50,11 @@ const CourseSchema = new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:"Tag"
         }
-    ]
+    ],
+    requirements:{
+        type:String,
+        required:true
+    },
 
 })
 
