@@ -1,6 +1,6 @@
 const cloudinary = require('cloudinary').v2
 
-exports.imgUploadToCloud =  async (file,folder,height,quality) => {
+exports.assetUploadToCloud =  async (file,folder,height,quality) => {
 
     try{
         const options = {folder}
@@ -12,11 +12,12 @@ exports.imgUploadToCloud =  async (file,folder,height,quality) => {
             options.quality = quality
         }
 
+        options.resourceType = "auto";
+
         return await cloudinary.uploader.upload(file.tempFilePath,options);    
 
     }
     catch(e){
-
         console.log("Error in uploading image to cloud",e.message);
     }   
 }

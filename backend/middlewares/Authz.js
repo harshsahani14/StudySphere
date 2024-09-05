@@ -47,7 +47,7 @@ exports.isStudent = (req,res,next) => {
         if(req.decodedToken.role !== "student"){
             return res.status(404).json({
                 sucess:false,
-                message:"You are not authirezed to view this page"
+                message:"You are not authorized to view this page"
             })
         }
         next();

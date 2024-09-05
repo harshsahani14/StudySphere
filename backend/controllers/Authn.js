@@ -98,16 +98,7 @@ exports.signUp = async (req,res) =>{
             })
         }
 
-        const dbUser = await User.find({email:email})
-
-        // Checking if user exists or not
-        if(dbUser){
-            return res.status(400).json({
-                message: "User already exists",
-                sucess: false
-            })
-        }
-
+        
         // Otp verification
         const recentOtp = await Otp.find({email}).sort({createdAt:-1}).limit(1);
         console.log(recentOtp);
