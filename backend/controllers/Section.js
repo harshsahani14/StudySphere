@@ -25,7 +25,7 @@ exports.createSection = async(req,res) => {
         const dbSection = await section.save();
 
         // push the section in the course
-        const updatedCourse = await Course.findByIdAndUpdate(courseId, { $push:{ content : dbSection._id }} );
+        const updatedCourse = await Course.findByIdAndUpdate(courseId, { $push:{ content : dbSection._id }},{new:true});
 
         // return response
         return res.status(200).json({
@@ -60,7 +60,7 @@ exports.updateSection = async (req,res) => {
         }
 
         // update section name of the given section
-        const updatedSection = await Section.findByIdAndUpdate(sectionId, {name:sectionName});
+        const updatedSection = await Section.findByIdAndUpdate(sectionId, {name:sectionName},{new:true});
 
         // return response
         return res.status(200).json({
@@ -93,7 +93,6 @@ exports.deleteSection = async(req,res) =>{
             })
         }
 
-
         // delete section based on id
         const deletedSection = await Section.findByIdAndDelete(sectionId)
         // return response
@@ -106,7 +105,7 @@ exports.deleteSection = async(req,res) =>{
     catch(e){
         return res.status(500).json({
             sucess:false,
-            message:"Internal servor error",
+            message:"Internal server error",
             error:e.message   
         })
     }

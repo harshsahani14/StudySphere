@@ -9,6 +9,23 @@ exports.resetPasswordStep1 = async(req,res) =>{
         // Fetch mail
         const {email} = req.body;
 
+        // Validation
+        if(!email){
+            return res.status(400).json({
+                sucess:false,
+                message: "Email is required"
+            })
+        }
+
+        const user = await User.find({email:email});
+
+        if(!user){
+            return res.status(400).json({
+                sucess:false,
+                message: "User does exist"
+            })
+        }
+    
         // Generate token
         let token = self.crypto.randomUUID();
         console.log("Reset password token:",token);
@@ -23,7 +40,7 @@ exports.resetPasswordStep1 = async(req,res) =>{
         const link = `http://localhost:3000/updatePassword/${token}`
 
         // Send link to mail
-        await sendMail(email , `Reset Password`,`Go to ${link} to rest password`);
+        await sendMail(email , `Reset Password`,`Go to ${link} to reset password`);
 
         return res.status(200).json({
             sucess:true,
@@ -33,6 +50,7 @@ exports.resetPasswordStep1 = async(req,res) =>{
     catch(e){
         return res.status(500).json({
             sucess:false,
+            error:"Internal sevrer error",
             message:e.message   
         })
     }
@@ -73,17 +91,19 @@ exports.resetPasswordStep2 = async (req,res) =>{
         // Reset password
         const password = await bcrypt.hash(10,newPassword);
 
-        await User.findOneAndUpdate({token:token},{ password:password },{new:true});
+        await User.findOneAndUpdate({token:token},{ password:password });
         // return response
         return res.status(200).json({
             sucess:true,
-            message:"Password reset succesful"
+            message:"Password reset succesful",
+            password:password
         })
     }
     catch(e){
         return res.status(500).json({
             sucess:false,
-            message:e.message   
+            message:"Internal server error",
+            error:e.message   
         })
     }
 }

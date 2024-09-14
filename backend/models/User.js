@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile"
     },
-    courses:[ {
+    courses:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Courses"
     }],
@@ -47,6 +47,10 @@ const UserSchema = new mongoose.Schema({
     },
     expiresIn:{
         type:Date
+    },
+    tag:{
+        type:String,
+        required:true
     }
 })
 

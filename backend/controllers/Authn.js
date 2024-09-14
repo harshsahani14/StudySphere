@@ -17,20 +17,20 @@ exports.sendOtp = async(req,res) => {
         const dbUser = await User.find({email:email})
 
         if(dbUser){
-            return res.status.json({
+            return res.status(400).json({
                 message: "User already exists",
                 sucess: false
             })
         }
 
         // Generating unique OTP
-
         let genOtp = await otp_generator.generate(6,{
             upperCase: false,
             specialChars: false,
             alphabets: false
         })
-
+        
+        console.log(genOtp);
         let result = await Otp.find({otp:genOtp});
         
         while(result){
@@ -50,20 +50,21 @@ exports.sendOtp = async(req,res) => {
 
         const response = await Otp.create({otp})
 
-        return res.status(500).json({
+        return res.status(200).json({
+            sucess:true,
             message:"Otp sent to email",
-            sucess:false
+            otp:response
         })
 
     }
     catch(e){
         return res.status(500).json({
-            message:e.message,
-            sucess:false
+            sucess:false,
+            message:"Internal server error",
+            error:e.message,
         })
     }
 }
-
 
 // signup
 exports.signUp = async (req,res) =>{
@@ -98,19 +99,18 @@ exports.signUp = async (req,res) =>{
             })
         }
 
-        
         // Otp verification
         const recentOtp = await Otp.find({email}).sort({createdAt:-1}).limit(1);
         console.log(recentOtp);
 
         if(recentOtp.otp !== otp){
             return res.status(400).json({
+                sucess: false,
                 message: "Otp mismatch",
-                sucess: false
             })
         }
-        else if(Date.now() - recentOtp.expiresIn > recentOtp.createdAt){
-            return res.status(400).json({
+        else if(Date.now()  > recentOtp.createdAt + recentOtp.expiresIn){
+            return res.status(410).json({
                 message: "Otp expired",
                 sucess: false
             })
@@ -138,18 +138,20 @@ exports.signUp = async (req,res) =>{
             img:`https://api.dicebear.com/5.x/initials/svg?seed=${fName} ${lName};`
         })
         
-        await User.save();
+        const newUser= await User.save();
 
         return res.status(200).json({
             message:"User create sucessfully",
-            sucess:false
+            sucess:false,
+            newUser:newUser
         })
         
     }
     catch(e){
         return res.status(500).json({
-            message:e.message,
-            sucess:false
+            sucess:false,
+            message:"Internal server error",
+            error:e.message,
         })
     }
 }
@@ -172,9 +174,9 @@ exports.login = async(req,res) => {
         const user = await User.findOne({email});
 
         if(!user){
-            return res.status(401).json({
+            return res.status(400).json({
                 sucess:false,
-                message:"Email and password are required",
+                message:"User does not exist",
             })
         }
 
@@ -213,8 +215,9 @@ exports.login = async(req,res) => {
     }
     catch(e){
         return res.status(500).json({
-            message:e.message,
-            sucess:false
+            sucess:false,
+            message:"Internal server error",
+            error:e.message
         })
     }
 }
@@ -240,7 +243,7 @@ exports.changePassword = async (req,res) => {
         const user = await User.findOne({password:pass});
 
         if(!user){
-            return res.status(401).json({
+            return res.status(400).json({
                 sucess:false,
                 message:"Old password is incorrect"
             })
@@ -263,14 +266,16 @@ exports.changePassword = async (req,res) => {
 
         return res.status(200).json({
             sucess:true,
-            message:"Password updated successfuly"
+            message:"Password updated successfuly",
+            updatedUser:result
         })
 
     }
     catch(e){
         return res.status(500).json({
-            message:e.message,
-            sucess:false
+            sucess:false,
+            message:"Internal server error",
+            error:e.message
         })
     }
 }

@@ -17,7 +17,7 @@ const OtpSchema = new mongoose.Schema({
     },
     expiresIn:{
         type:Number,
-        default:300000
+        default:120000
     }
 
 });

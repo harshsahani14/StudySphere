@@ -1,7 +1,6 @@
 const Category = require("../models/Category");
 const Course = require("../models/Course");
 
-
 exports.createCategory = async(req,res) =>{
 
     try{
