@@ -14,7 +14,7 @@ exports.createCategory = async(req,res) =>{
             })
         }
 
-        const tag = new Tag({
+        const tag = new Category({
             name,
             description
         })
@@ -23,7 +23,7 @@ exports.createCategory = async(req,res) =>{
 
         return res.status(200).json({
             sucess:true,
-            message:"Tag created succesfully"
+            message:"Category created succesfully"
         })
 
     }
@@ -35,16 +35,16 @@ exports.createCategory = async(req,res) =>{
     }
 }
 
-exports.getAllCategorys = async(req,res)=>{
+exports.getAllCategories = async(req,res)=>{
 
     try{
 
-        const tags = await Tag.find({},{name:true,description:true});
+        const category = await Category.find({},{name:true,description:true});
 
         return res.status(200).json({
             sucess:true,
-            tags:tags,
-            message:"Tags retrieved sucessfully"
+            category:category,
+            message:"Categories retrieved sucessfully"
         })
     }
     catch(e){
