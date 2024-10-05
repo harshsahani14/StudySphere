@@ -1,37 +1,36 @@
 const mongoose = require("mongoose");
-const sendMail = require("../config/nodemailer")
+const { sendMail } = require("../utils/nodemailer");
+const { emailOtp } = require('../templates/Email_Otp');
 
-const OtpSchema = new mongoose.Schema({
+const OtpSchema = new mongoose.Schema(
+  {
+    otp: {
+      type:String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Number,
+      required:true
+    },
+    expiresIn: {
+      type: Number,
+      default: 120000,
+    },
+  },
+  
+);
 
-    otp:{
-        type:Number,
-        required:true
-    },
-    email:{
-        type:String,
-        required:true
-    },
-    createdAt:{
-        type:Number,
-        default:Date.now(),
-    },
-    expiresIn:{
-        type:Number,
-        default:120000
-    }
-
+OtpSchema.pre("save", function(next){
+  try {
+    const response = sendMail(this.email, "Otp Verification for Edtech", emailOtp(this.otp));
+    next();
+  } catch (e) {
+    console.log("Error while sending mail", e.message);
+  }
 });
 
-OtpSchema.pre('save',async(next)=>{
-
-    try{
-        const response = await sendMail(this.email,'Otp Verification',this.otp);
-        next();
-    }
-    catch(e){
-        console.log("Error while sending mail",e.message)
-    }
-})
-
-
-module.exports = mongoose.Model("Otp",OtpSchema);
+module.exports = mongoose.model("Otp", OtpSchema);

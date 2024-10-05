@@ -1,57 +1,63 @@
 const mongoose = require("mongoose");
+const Category = require("./Category");
 
 const UserSchema = new mongoose.Schema({
-
-    firstName:{
-        type:String,
-        required:true
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  role: {
+    type: String,
+    enum: ["admin", "instructor", "student"],
+  },
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Profile",
+  },
+  courses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
     },
-    lastName:{
-        type:String,
-        required:true
+  ],
+  img: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
+  courseProgess: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CoursesProgress",
     },
-    email:{
-        type:String,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    role:{
-        type:String,
-        enum:["admin","instructor","student"]
-    },
-    profile:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Profile"
-    },
-    courses:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Courses"
-    }],
-    img:{
-        type:String,
-        required:true
-    },
-    phone:{
-        type:String,
-        required:true
-    },
-    courseProgess:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"CoursesProgress"
-    }],
-    token:{
-        type:String
-    },
-    expiresIn:{
-        type:Date
-    },
-    tag:{
-        type:String,
-        required:true
+  ],
+  token: {
+    type: String,
+  },
+  expiresIn: {
+    type: Number,
+  },
+  category:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
     }
-})
+  ]
+});
 
-module.exports = mongoose.Model("User",UserSchema);
+module.exports = mongoose.model("User", UserSchema);

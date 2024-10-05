@@ -1,4 +1,5 @@
-const nodeMailer = require('../utils/nodemailer');
+const {sendMail}= require('../utils/nodemailer');
+const {emailContactUs} = require('../templates/contact_Us_Template');
 
 exports.contactUs = async(req,res)=>{
 
@@ -15,10 +16,10 @@ exports.contactUs = async(req,res)=>{
         }
 
         // send mail to Owner
-        const mailToOwner = await nodeMailer("harshsahani078@gmail.com",`Grievance mail from EdTech`,message);
+        const mailToOwner = await sendMail("harshsahani078@gmail.com",`Grievance mail from EdTech`,message);
 
         // send mail to user that we have received his mail
-        const mailToUser = await nodeMailer(emailId,`Grievance mail received by EdTech`, `Hi ${firstName} ${lastName},this is to inform you that we have successfully received your grievance mail you submitted on EdTech platform`);
+        const mailToUser = await sendMail(emailId,`Grievance mail received by EdTech`, emailContactUs(firstName,lastName));
 
         // return response
         return res.status(200).json({

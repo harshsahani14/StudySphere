@@ -1,6 +1,6 @@
 const cloudinary = require('cloudinary').v2
 
-exports.assetUploadToCloud =  async (file,folder,height,quality) => {
+exports.assetUploadToCloud =  async (file,folder,isVideo=false,height,quality) => {
 
     try{
         const options = {folder}
@@ -12,7 +12,12 @@ exports.assetUploadToCloud =  async (file,folder,height,quality) => {
             options.quality = quality
         }
 
-        options.resourceType = "auto";
+
+        if(isVideo){
+            options.resource_type = "video"
+        }else{
+            options.resource_type = "auto";
+        }
 
         return cloudinary.uploader.upload(file.tempFilePath,options);    
     }

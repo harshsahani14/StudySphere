@@ -5,7 +5,7 @@ exports.cloudinarySetup = async ()=>{
 
     try{
         cloudinary.config({
-            cloud_name:process.env.CLOUD_NAME,
+            cloud_name:process.env.cloudName,
             api_key:process.env.cloudinary_APIKEY,
             api_secret:process.env.cloudinary_APISECRET, 
         })

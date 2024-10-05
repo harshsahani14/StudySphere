@@ -37,7 +37,7 @@ const CourseSchema = new mongoose.Schema({
     rating_review:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref:"Rating_Review"
+            ref:"RatingReview"
         }
     ],
     thumbnail:{
@@ -60,4 +60,4 @@ const CourseSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.Model("Course",CourseSchema);
+module.exports = mongoose.model("Course",CourseSchema);

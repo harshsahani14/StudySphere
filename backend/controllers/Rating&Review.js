@@ -1,5 +1,7 @@
 const Course = require("../models/Course");
 const Rating_Review = require("../models/Rating_Review");
+const mongoose = require("mongoose");
+// const ObjectId = mongoose.Types.ObjectId;
 
 // createRating&Review
 exports.createRatingReview = async(req,res)=>{
@@ -13,13 +15,14 @@ exports.createRatingReview = async(req,res)=>{
         const {rating,review,courseId} = req.body;
 
         // check if student is enrolled in course or not
-        const courseDetails = await Course.findOne({_id:courseId,
-                                                    studentsEnrolled: {$elemMatch : {$eq :userId }} });
+        const courseDetails = await Course.findOne({_id:courseId});
 
-        if(!courseDetails){
+        console.log(courseDetails)                                            
+
+        if(!courseDetails.studentsEnrolled.includes(userId)){
             return res.status(404).json({
                 sucess:false,
-                message:"Student is not enrolled in case",
+                message:"Student is not enrolled in course",
             })
         }                                            
 
@@ -66,15 +69,18 @@ exports.getAvgRatingOfCourse = async(req,res)=>{
         // calculate avg rating
         const avgRating = await Rating_Review.aggregate([
                 { 
-                    $match: { course: courseId }  // Filter sales with status "completed"
+                    $match: { course: new mongoose.Schema.Types.ObjectId(courseId) }  
                 },
                 {
-                $group: {
-                    _id: course,                   // Group by item
-                    avgRating: { $avg: "rating" } // Sum the quantity for each item
-                }
-                }
+                    $group:
+                      {
+                        _id: "$course",
+                        avgRating: { $avg: "$rating" }
+                      }
+                  }  
           ])
+
+        console.log(avgRating);  
 
         // return response
         if(avgRating.length>0){
