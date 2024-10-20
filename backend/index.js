@@ -5,12 +5,12 @@ const paymentRouter = require("./routes/payment_router");
 const authRouter = require("./routes/auth_routes");
 const profileRouter = require("./routes/profile_routes");
 const categoryRouter = require("./routes/category_routes");
-const sectionRouter = require('./routes/section_router')
+const sectionRouter = require("./routes/section_router");
 const subSectionRouter = require("./routes/subSection_routes");
-const courseRouter = require('./routes/course_Routes');
-const ratingReviewRouter = require('./routes/rating_review_router')
-const courseProgressRouter = require('./routes/course_progress_router');
-const contactUs = require('./routes/contactus_routes');
+const courseRouter = require("./routes/course_Routes");
+const ratingReviewRouter = require("./routes/rating_review_router");
+const courseProgressRouter = require("./routes/course_progress_router");
+const contactUs = require("./routes/contactus_routes");
 
 const dbConnect = require("./config/database");
 const cookieParser = require("cookie-parser");
@@ -18,7 +18,6 @@ const { cloudinarySetup } = require("./config/cloudDb");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
-
 
 dotenv.config();
 
@@ -48,12 +47,12 @@ server.use("/v1", authRouter);
 server.use("/v1", profileRouter);
 server.use("/v1", categoryRouter);
 server.use("/v1", sectionRouter);
-server.use("/v1",subSectionRouter);
-server.use("/v1",courseRouter)
-server.use("/v1",ratingReviewRouter);
-server.use("/v1",paymentRouter);
-server.use("/v1",courseProgressRouter);
-server.use("/v1",contactUs);
+server.use("/v1", subSectionRouter);
+server.use("/v1", courseRouter);
+server.use("/v1", ratingReviewRouter);
+server.use("/v1", paymentRouter);
+server.use("/v1", courseProgressRouter);
+server.use("/v1", contactUs);
 
 const port = process.env.PORT || 4000;
 server.listen(port, () => {
@@ -61,5 +60,5 @@ server.listen(port, () => {
 });
 
 server.get("/edtech", (req, res) => {
-  res.send("Edtech backend");
+  res.send("Edtech backend is live");
 });
