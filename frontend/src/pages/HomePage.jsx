@@ -4,8 +4,15 @@ import { Link,Outlet } from 'react-router-dom';
 import homePageVideo1 from '../assets/videos/homePageVideo1.mp4'
 import whiteBg from '../assets/images/whiteBg.png'
 import Button from '../components/Button';
-import { TypeAnimation } from 'react-type-animation';
 import CodeBlock from '../components/CodeBlock';
+import { GiAchievement } from "react-icons/gi";
+import IconText from '../components/IconText';
+import { RiGraduationCapFill } from "react-icons/ri";
+import { IoDiamondOutline } from "react-icons/io5";
+import { IoDiamond } from 'react-icons/io5';
+import { HiCodeBracketSquare } from "react-icons/hi2";
+import homePageVideo2 from '../assets/videos/homePageVideo2.mp4'
+import HighLightText from '../components/HighLightText';
 
 const HomePage = () => {
 
@@ -78,7 +85,7 @@ const HomePage = () => {
 
             </div>
 
-            <CodeBlock isCodeBlockFirst={false} whiteHeading1={"Unlock your"} blueHeading={"coding potential"} whiteHeading2={"with our online courses"} para={'Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you.'} button1={"Try it yourself"} button2={'Learn More'} button1Width={179} button2Width={135} code={code1} shadowColor1={'#8A2BE2'} shadowColor2={'#FFA500'} shadowColor3={'#F8F8FF'}></CodeBlock>
+            <CodeBlock isCodeBlockFirst={false} whiteHeading1={"Unlock your"} blueHeading={"coding potential"} whiteHeading2={"with our online courses"} para={'Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you.'} button1={"Try it yourself"} button2={'Learn More'} button1Width={179} button2Width={135} code={code1} shadowColor1={'#8A2BE2'}shadowColor2={'#FFA500'} shadowColor3={'#F8F8FF'}></CodeBlock>
 
             
             
@@ -89,7 +96,7 @@ const HomePage = () => {
 
       {/* Section 2 */}
 
-      <div className=' w-full h-[1000px] '>
+      <div className=' w-full  '>
 
         <div className=' w-full h-[320px] flex justify-center items-center gap-[24px]'>
 
@@ -98,11 +105,11 @@ const HomePage = () => {
 
         </div>
 
-        <div className=' h-[921px] w-full py-[90px] px-[120px] gap-[52px]'>
+        <div className=' bg-[#F9F9F9] h-[1500px] w-full py-[90px] px-[120px] gap-[52px]'>
 
             <div className=' w-[1200px] h-[144px] gap-[32px] flex flex-row'>
 
-                <div className='w-[594px] h-[88px] font-[600] text-[36px] leading-[44px] text-left'><p>Get the skills you need for a <span className=' '>job that is in demand</span>.</p></div>
+                <div className='w-[594px] h-[88px] '><p className='font-[600] text-[36px] leading-[44px]'>Get the skills you need for a </p><HighLightText text={'job that is in demand'} /></div>
 
                 <div className='flex flex-col gap-[12px] w-[594px]'>
 
@@ -118,6 +125,40 @@ const HomePage = () => {
                 </div>
                 
 
+            </div>
+
+            <div className=' w-11/12 h-[545px] gap-[76px] mx-auto flex flex-row  mt-[200px]'>
+
+                <div className=' flex flex-col w-[410px] h-[432px] gap-[32px] my-[113px]'>
+                    
+                    <IconText icon={<GiAchievement className=' w-[24px] h-[24px] text-blue200'/>} heading={'Leadership'} para={'Fully committed to the success company'}></IconText>
+                    <IconText icon={<RiGraduationCapFill  className='w-[24px] h-[24px] text-pink300' />} heading={'Responsibilty'} para={'Students will always be our top priority'}></IconText>
+                    <IconText icon={<IoDiamond className='w-[24px] h-[24px] text-green200 ' />} heading={'Flexibility'} para={'The ability to switch is an important skills'}></IconText>
+                    <IconText icon={<HiCodeBracketSquare className='w-[24px] h-[24px] text-brown100 '/>} heading={'Solve the problem'} para={'Code your way to a solution'}></IconText>
+
+                </div>
+
+                <video className='w-[714px] h-full  z-10 relative '  muted loop autoPlay>
+                    <source src={homePageVideo2} type="video/mp4"/>
+                </video>
+                <img  className='  w-[714px] h-[400px] absolute left-[670px] z-0 top-[3350px]'   src={whiteBg}></img>
+                <div className='absolute z-20 w-[520px] h-[128px] bg-green700 top-[3685px] left-[760px] flex flex-row p-[42px] gap-[52px] justify-center' >
+
+                    <div className='w-[161px] h-[44px] gap-[24px] flex'>
+                      <p className=' text-richblack5 text-[36px] leading-[44px] text-center font-[700]'>10</p>
+                      <p className='text-[15px] leading-[22px] font-[500] text-green200 text-left'> YEARS <br></br> EXPEREINCE </p>
+                    </div>
+                    
+
+                    <div className=' w-[1px] bg-green200 h-[44px]'></div>
+
+                    <div className='w-[200px] h-[44px] gap-[36px] flex'>
+                       <p className='text-richblack5 text-[36px] leading-[44px] text-center font-[700]'>250</p>
+                       <p className='text-[15px] leading-[22px] font-[500] text-green200 text-left'> TYPES OF COURSES </p>
+                    </div>
+                    
+
+                </div>
             </div>
 
         </div>

@@ -24,7 +24,7 @@ const CodeBlock = ({whiteHeading1,whiteHeading2,blueHeading1,blueHeading2,para,b
                     </div>
                 </div>
                 <div className={` flex flex-row border gap-[12px] p-[8px] bg-richblack800  h-[315px] relative border-richblack900 ${isCodeBlockFirst ? " w-[500px]" : "w-[480px]"}  `}>
-                    <div className={`bg-gradient-to-r from-[${shadowColor1}] via-[${shadowColor2}] to-[${shadowColor3}] blur-[68px] opacity-40 absolute w-[372px] h-[257px]  top-[-30px] left-[-10px] `}></div>
+                    <div className={`${ isCodeBlockFirst ? 'bg-gradient-to-r from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] blur-[68px] opacity-40 absolute w-[372px] h-[257px]  top-[-30px] left-[-10px]'  : 'bg-gradient-to-r from-[#8A2BE2] via-[#FFA500] to-[#F8F8FF] blur-[68px] opacity-40 absolute w-[372px] h-[257px]  top-[-30px] left-[-10px]' } `} ></div>
                     
                     <div className=' text-richblack200 flex flex-col leading-[25px]'>
                         <div>1</div>

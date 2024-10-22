@@ -11,7 +11,13 @@ module.exports = {
       'blue50':'#7EC0D9',
       'blue100':'#47A5C5',
       'blue200':'#118AB2',
-      'yellow':'#FFD60A'
+      'blue500':'#0A5A72',
+      'yellow':'#FFD60A',
+      'pink300':'#D43D63',
+      'green200':'#0FBF8E',
+      'green700':"#014A32",
+      'brown100':'#E7BC5B',
+      
 
     },
     boxShadow: {
