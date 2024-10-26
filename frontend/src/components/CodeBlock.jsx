@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../components/Button';
 import { TypeAnimation } from 'react-type-animation';
+import HighLightText from './HighLightText';
 
 const CodeBlock = ({whiteHeading1,whiteHeading2,blueHeading1,blueHeading2,para,button1,button2,button1Width,button2Width,code,shadowColor1,shadowColor2,shadowColor3,isCodeBlockFirst}) => {
   return (
@@ -9,7 +10,7 @@ const CodeBlock = ({whiteHeading1,whiteHeading2,blueHeading1,blueHeading2,para,b
                 <div className=' w-[486px] h-[284px] gap-[12px]'>
 
                     <div className=' w-[486px] h-[88px] text-left'>
-                          <h1 className=' font-semibold text-richblack5 text-[36px] leading-[44px] '>{whiteHeading1} <span className='text-blue50'>{blueHeading1}</span><p className='text-blue50'> {blueHeading2}</p> {whiteHeading2}</h1>
+                          <h1 className=' font-semibold text-richblack5 text-[36px] leading-[44px] '>{whiteHeading1} <HighLightText text={blueHeading1}></HighLightText> <p className=' gradient-text'>{blueHeading2}</p> {whiteHeading2}</h1>
                     </div>
                     
 
@@ -44,7 +45,7 @@ const CodeBlock = ({whiteHeading1,whiteHeading2,blueHeading1,blueHeading2,para,b
                     <div>
                     <TypeAnimation
                         sequence={[code,2000,"",2000]}
-                        style={{fontSize:'14px',whiteSpace: 'pre-line', color:"yellow", textAlign:'left',display:'block',fontWeight:"700",lineHeight:"25px"}}
+                        style={{fontSize:'14px',whiteSpace: 'pre-line', color:"yellow", textAlign:'left',display:'inline-block',fontWeight:"700",lineHeight:"25px"}}
                         repeat={Infinity}
                         cursor={true}
                         deletionSpeed={60}

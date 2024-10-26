@@ -11,8 +11,8 @@ const IconText = ({icon,heading,para}) => {
 
             <div className=' w-[310px] h-[54px] flex flex-col gap-[2px] '>
 
-                <p className=' text-left text-[18px] font-[600] leading-[26px] text-richblack900'>{heading}</p>
-                <p className=' text-left font-[400] text-[14px] leading-[22px] text-richblack600'> {para}</p>
+                <p className=' text-left text-[18px] font-semibold leading-[26px] text-richblack900'>{heading}</p>
+                <p className=' text-left font-[500] text-[14px] leading-[22px] text-richblack600'> {para}</p>
 
             </div>
     </div>
