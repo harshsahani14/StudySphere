@@ -18,6 +18,7 @@ module.exports = {
       'blue300':'#0F7A9D',
       'blue500':'#0A5A72',
       'yellow':'#FFD60A',
+      'pink200':'#EF476F',
       'pink300':'#D43D63',
       'green200':'#0FBF8E',
       'green700':"#014A32",
@@ -36,6 +37,7 @@ module.exports = {
       'homepageBox2':'12px 12px 0px 0px rgba(79,10,37,0.1)',
       'homepageBox3':'12px 12px 0px 0px rgba(65, 38, 11, 0.1)',
       'homePageUpperBox': '12px 12px 0px 0px rgba(255, 214, 10, 1)',
+      'toggle':'0px 1px 0px 0px rgba(255, 255, 255, 1.8)'
       
 
     },
