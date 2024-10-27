@@ -3,6 +3,10 @@ import Button from '../components/Button'
 import './LoginPage.css'
 import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
+import loginPagePhoto1 from '../assets/images/loginPage1Photo.png'
+import loginPageBg from '../assets/images/loginPageBg.png'
+import loginPagePhoto2 from '../assets/images/loginPage2Photo.png'
+
 
 const LoginPage = () => {
 
@@ -50,8 +54,12 @@ const LoginPage = () => {
             
             
         </div>
-        <div
-        ></div>
+        <div className=' w-[600px] h-[550px] relative'>
+            <img src={ `${ userType==='student' ? loginPagePhoto1 : loginPagePhoto2}`  } className={` ${ userType === 'student' ? 'w-[468px] h-[544px]' : 'w-[508px] h-[528px]' }  absolute z-20 right-12`}></img>
+            <img src={loginPageBg} className={`w-[468px] h-[544px] absolute z-10  ${
+                userType === 'student' ? 'w-[468px] h-[544px] bottom-[-10px] right-6' : 'w-[518px] h-[528px] bottom-2 right-6'
+            }`}></img>
+        </div>
       
     </div>
   )
