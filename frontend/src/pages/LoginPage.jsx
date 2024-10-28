@@ -3,6 +3,10 @@ import Button from '../components/Button'
 import './LoginPage.css'
 import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
+import loginPageBg from '../assets/images/loginPageFrame.png'
+import loginPagePhoto1 from '../assets/images/loginPagePhoto1.png'
+import loginPagePhoto2 from '../assets/images/loginPagePhoto2.png'
+
 
 const LoginPage = () => {
 
@@ -34,8 +38,8 @@ const LoginPage = () => {
             </div>
             
             <form >
-                <label>
-                    </label><br></br>
+                <div for="emailId" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></div>
+                <input type="text" id="emailId" name="emailId" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter email address' required></input><br></br><br></br>
                 <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Password <div className='ml-[5px] text-pink200'>*</div></div>
                 <div className=' relative h-[102px] mb-[-56px]'>
                         <input type={`${ showPass ? 'text' : 'password' }`} id="pass" name="pass" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter Password' required></input>
@@ -50,8 +54,14 @@ const LoginPage = () => {
             
             
         </div>
-        <div
-        ></div>
+
+
+        <div className=' w-[600px] h-[550px] relative'>
+            <img src={ `${ userType==='student' ? loginPagePhoto1 : loginPagePhoto2}`  } className={` ${ userType === 'student' ? 'w-[544px] h-[504px]' : 'w-[508px] h-[528px]' }  absolute z-20 right-12`}></img>
+            <img src={loginPageBg} className={` absolute z-10  ${
+                userType === 'student' ? 'w-[544px] h-[504px] bottom-[25px] right-6' : 'w-[518px] h-[528px] top-5 right-6'
+            }`}></img>
+        </div>
       
     </div>
   )

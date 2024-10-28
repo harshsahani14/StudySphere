@@ -9,6 +9,7 @@ module.exports = {
       'richblack200':'#999DAA',
       'richblack300':'#838894',
       'richblack600':'#424854',
+      'richblack700':"#2C333F",
       'richblack900':'#000814',
       'richblack5':'#F1F2FF',
       'blue25':'#B4DAEC',

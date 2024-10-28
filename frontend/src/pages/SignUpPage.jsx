@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import InputText from '../components/InputText';
+
 
 const SignUpPage = () => {
 
@@ -33,9 +33,7 @@ const SignUpPage = () => {
           <form className=' mt-[30px]'>
 
               <div className='flex flex-row w-fit h-[106px] gap-[20px]'>
-                  <InputText labelText={"First Name"} width={212} placeholder={"Enter first name"}></InputText>
-                
-                  <InputText labelText={"Last Name"} width={212} placeholder={"Enter last name"}></InputText>
+                 
                   
               </div>
           </form>
