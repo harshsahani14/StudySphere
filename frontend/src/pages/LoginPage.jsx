@@ -4,7 +4,6 @@ import './LoginPage.css'
 import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 
-
 const LoginPage = () => {
 
     const [userType,setUserType] = useState('student');
