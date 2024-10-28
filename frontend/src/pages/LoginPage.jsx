@@ -6,6 +6,7 @@ import { FiEyeOff } from "react-icons/fi";
 import loginPagePhoto1 from '../assets/images/loginPage1Photo.png'
 import loginPageBg from '../assets/images/loginPageBg.png'
 import loginPagePhoto2 from '../assets/images/loginPage2Photo.png'
+import Input from '../components/Input';
 
 
 const LoginPage = () => {
@@ -31,15 +32,15 @@ const LoginPage = () => {
                     }
                 </p>
             </div>
+            
             <div className=' flex gap-[5px] w-[230px] h-[44px] bg-richblack800 p-[4px] rounded-[500px] shadow-toggle '>
                 <div className={` w-[97px] h-[36px] rounded-[100px] py-[6px] px-[18px] font-[500] text-[16px] leading-[24px] text-richblack5 cursor-pointer duration-200 ${userType=='student' ? 'bg-richblack900' : ''} ease-in-out`} onClick={()=> {setUserType("student")} }> Student</div>
-                <div className={`w-[120px] h-[36px] rounded-[100px] px-[18px] py-[6px] font-[500] text-[16px] leading-[24px] text-richblack5 cursor-pointer ${ userType=='instructor' ? 'bg-richblack900' : ''} duration-200 ease-in-out`} onClick={()=>{setUserType("instructor")}}> Instructor</div>
+                <div className={`w-[120px] h-[36px] rounded-[100px] px-[18px] py-[6px] font-[500] text-[16px] leading-[24px] text-richblack5 cursor-pointer ${ userType=='instructor' ? 'bg-richblack900' : ''} duration-200 ease-in-out text-center`} onClick={()=>{setUserType("instructor")}}> Instructor</div>
             </div>
             
-            
             <form >
-                <div for="emailId" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></div>
-                <input type="text" id="emailId" name="emailId" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter email address' required></input><br></br><br></br>
+                <label>
+                    </label><br></br>
                 <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Password <div className='ml-[5px] text-pink200'>*</div></div>
                 <div className=' relative h-[102px] mb-[-56px]'>
                         <input type={`${ showPass ? 'text' : 'password' }`} id="pass" name="pass" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter Password' required></input>
