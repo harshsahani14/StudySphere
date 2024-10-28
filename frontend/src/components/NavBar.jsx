@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import websiteLogo from '../assets/images/websiteLogo.png'
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { BsCart3 } from "react-icons/bs";
+import { apiCall } from '../apis/apiCall'
+import {categoryApiURL} from '../apis/apiUrl'
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 const NavBar = () => {
 
   const {token} = useSelector(state => state.auth)
   const {user} = useSelector(state => state.profile)
   const {totalItems} = useSelector(state => state.cart)
+
+  const [categories,setCategories] = useState([])
+  // var categories = []
+
+
+  const fetchCategories = async ()=>{
+
+    try{
+      const result = await apiCall('GET',categoryApiURL.getAll)
+      console.log(result.data.category)
+      setCategories([...result.data.category])
+      // categories = [...result.data.category]
+      console.log(categories)  
+    }
+    catch(e){
+      console.log(e.message)
+    }
+  }
+  useEffect( ()=>{
+      fetchCategories()
+  },[])
 
   return (
     <div className=' flex items-center w-full h-[56px] border-b-[1px] border-richblack600 bg-richblack900  gap-[32px] justify-around relative '>
@@ -21,9 +45,13 @@ const NavBar = () => {
             <NavLink to={"/"} style={({isActive})=>({
                 color : isActive ? "#FFD60A" : "#F1F2FF"
             })} className=" font-[600] text-[16px] leading-[24px] ">Home</NavLink>
-            <NavLink to={"/catalog"} style={({isActive})=>({
-                color : isActive ? "#FFD60A" : "#F1F2FF"
-            })} className=" font-[600] text-[16px] leading-[24px] ">Catalog</NavLink>
+            
+            <div className=' flex gap-2 relative w-[74px] h-[32px] cursor-pointer '>
+                <p className=' font-[600] text-[16px] leading-[24px] text-richblack5'>Catalog</p>
+                <MdOutlineKeyboardArrowDown className=' text-richblack5 absolute bottom-3 right-0' />
+                <div></div>
+                <div className=''></div>
+            </div>
             
             
             <NavLink to={"/aboutus"} style={({isActive})=>({
