@@ -55,12 +55,8 @@ const LoginPage = () => {
             
             
         </div>
-        <div className=' w-[600px] h-[550px] relative'>
-            <img src={ `${ userType==='student' ? loginPagePhoto1 : loginPagePhoto2}`  } className={` ${ userType === 'student' ? 'w-[468px] h-[544px]' : 'w-[508px] h-[528px]' }  absolute z-20 right-12`}></img>
-            <img src={loginPageBg} className={`w-[468px] h-[544px] absolute z-10  ${
-                userType === 'student' ? 'w-[468px] h-[544px] bottom-[-10px] right-6' : 'w-[518px] h-[528px] bottom-2 right-6'
-            }`}></img>
-        </div>
+        <div
+        ></div>
       
     </div>
   )
