@@ -3,10 +3,6 @@ import Button from '../components/Button'
 import './LoginPage.css'
 import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
-import loginPagePhoto1 from '../assets/images/loginPage1Photo.png'
-import loginPageBg from '../assets/images/loginPageBg.png'
-import loginPagePhoto2 from '../assets/images/loginPage2Photo.png'
-
 
 
 const LoginPage = () => {
