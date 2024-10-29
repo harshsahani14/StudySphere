@@ -6,6 +6,7 @@ import { FiEyeOff } from "react-icons/fi";
 import loginPageBg from '../assets/images/loginPageFrame.png'
 import loginPagePhoto1 from '../assets/images/loginPagePhoto1.png'
 import loginPagePhoto2 from '../assets/images/loginPagePhoto2.png'
+import { Link } from 'react-router-dom';
 
 
 const LoginPage = () => {
@@ -46,7 +47,8 @@ const LoginPage = () => {
                         {
                             showPass ? (<FiEyeOff className=' z-[20] absolute right-3 top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(false)}}/>) : (<FiEye className='z-[20] absolute right-3 top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(true)}}></FiEye>)
                         }
-                        <p className='absolute font-[600] text-[12px] leading-[20px]  text-blue200 bottom-7 right-0 cursor-pointer'>Forgot password</p>
+                        <Link to={'/forgotpassword'} className='absolute font-[600] text-[12px] leading-[20px]  text-blue200 bottom-7 right-0 cursor-pointer'>Forgot password</Link>
+                        
                 </div><br></br><br></br>
                 <Button content={'Sign in'} isYellow={true} hasArrow={false} width={444} link={'/catalog'}></Button>
                 

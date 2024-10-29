@@ -23,6 +23,7 @@ const SignUpPage = () => {
     phone:"",
     password:"",
     confirmPassword:"",
+    role:userType,
   });
 
   function changeHandler(event){
@@ -42,12 +43,13 @@ const SignUpPage = () => {
 
 
     navigate("/submitotp");
-
+    console.log(form)
     try{
       await apiCall("POST",authApiUrl.sendOtp,{email : form.emailAddress})
       toast.success("Otp sent to mail")
     }
     catch(e){
+      console.log(e.message)
       toast.error("Could not send otp")
     }
 

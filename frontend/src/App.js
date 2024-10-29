@@ -8,6 +8,9 @@ import NavBar from './components/NavBar';
 import CatalogPage from './pages/CatalogPage';
 import AboutusPage from './pages/AboutusPage';
 import ContactusPage from './pages/ContactusPage';
+import OtpPage from './pages/OtpPage';
+import ForgotPass from './pages/ForgotPass';
+import NewPassword from './pages/NewPassword';
 
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
         <Route path="/catalog" element={<CatalogPage></CatalogPage>}></Route>
         <Route path="/aboutus" element={<AboutusPage></AboutusPage>}></Route>
         <Route path="/contactus" element={<ContactusPage></ContactusPage>}></Route>
+        <Route path="/sumbitotp" element={<OtpPage></OtpPage>}></Route>
+        <Route path="/forgotpassword" element={<ForgotPass></ForgotPass>}></Route>
+        <Route path="/updatePassword/:id" element={<NewPassword></NewPassword>}></Route>
       </Routes>
     </div>
   );

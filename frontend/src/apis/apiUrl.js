@@ -5,5 +5,7 @@ export const categoryApiURL = {
 }
 
 export const authApiUrl = {
-    sendOtp:`${BASE_URL}/sendOtp`
+    sendOtp:`${BASE_URL}/sendOtp`,
+    resetPasswordStep1:`${BASE_URL}/resetPasswordStep1`,
+    resetPasswordStep2:`${BASE_URL}/resetPasswordStep2`
 }
