@@ -2,12 +2,56 @@ import React from 'react'
 import { useState } from 'react';
 import { FiPlus,FiEyeOff,FiEye } from "react-icons/fi";
 import Button from '../components/Button';
-
+import { useNavigate } from 'react-router';
+import { apiCall } from '../apis/apiCall'
+import {authApiUrl} from '../apis/apiUrl'
+import toast from 'react-hot-toast';
 
 const SignUpPage = () => {
 
+
+  const navigate = useNavigate();
+
+
   const [userType,setUserType] = useState('student');
-  const [showPass,setShowPass] = useState(false)
+  const [showPass,setShowPass] = useState(false);
+  const [showConfirmPass,setShowConfirmPass] = useState(false);
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    phone:"",
+    password:"",
+    confirmPassword:"",
+  });
+
+  function changeHandler(event){
+
+    setForm((form)=>{
+
+      return{
+        ...form,
+        [event.target.name]: event.target.value
+      }
+    })
+  }
+
+  async function submitHandler(event){
+
+    event.preventDefault();
+
+
+    navigate("/submitotp");
+
+    try{
+      await apiCall("POST",authApiUrl.sendOtp,{email : form.emailAddress})
+      toast.success("Otp sent to mail")
+    }
+    catch(e){
+      toast.error("Could not send otp")
+    }
+
+  }
 
 
   return (
@@ -34,28 +78,28 @@ const SignUpPage = () => {
           </div>
           
           
-          <form className=' mt-[30px] w-[464px] '>
+          <form className=' mt-[30px] w-[464px] ' onSubmit={submitHandler}>
 
               <div className='flex flex-row w-[444px] h-[76px] '>
                 <div>
-                   <label for="fName" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 flex mb-[10px] '>First Name<div className='ml-[5px] text-pink200 '>*</div></label>
-                    <input type="text" id="fName" name="fName" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter first name' required></input>
+                   <label for="firstName" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 flex mb-[10px] '>First Name<div className='ml-[5px] text-pink200 '>*</div></label>
+                    <input type="text" id="firstName" name="firstName" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter first name' onChange={changeHandler} required></input>
                 </div>
                   
                   <div className=' ml-[-160px]'>
-                     <label for="lName" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 flex mb-[10px] '>Last Name<div className='ml-[5px] text-pink200 '>*</div></label>
-                      <input type="text" id="lName" name="lName" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter last name' required></input>
+                     <label for="lastName" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 flex mb-[10px] '>Last Name<div className='ml-[5px] text-pink200 '>*</div></label>
+                      <input type="text" id="lastName" name="lastName" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter last name' onChange={changeHandler} required></input>
                   </div>
               </div>
                 
 
               <div className=' mt-[20px]'>
-                    <label for="emailId" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></label>
-                     <input type="text" id="emailId" name="emailId" className='mr-[200px] ml-[10px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 scale-x-105' placeholder='Enter email address' required></input>
+                    <label for="emailAddress" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></label>
+                     <input type="text" id="emailAddress" name="emailAddress" className='mr-[200px] ml-[10px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 scale-x-105' placeholder='Enter email address' onChange={changeHandler} required></input>
               </div>
 
               <div className=' mt-[20px]'>
-                   <label for="phoneno" className='  w-full text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Phone Number <div className='ml-[5px] text-pink200'>*</div></label>
+                   <label for="phone" className='  w-full text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Phone Number <div className='ml-[5px] text-pink200'>*</div></label>
 
                   <div className=' flex gap-[20px] w-[455px] h-[48px] '>
 
@@ -65,7 +109,7 @@ const SignUpPage = () => {
                               91
                           </div>
                       </div>
-                      <input type="text" id="phoneno" name="phoneno" className=' w-full h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 scale-x-105 ml-[15px]' placeholder='12345 67890' required></input>
+                      <input type="text" id="phone" name="phone" className=' w-full h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 scale-x-105 ml-[15px]' placeholder='12345 67890' onChange={changeHandler} required></input>
                   </div>
                    
               </div>
@@ -74,7 +118,7 @@ const SignUpPage = () => {
                     <div className='flex flex-col '>
                         <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px] w-full'>Create Password <div className='ml-[5px] text-pink200'>*</div></div>
                         <div className=' relative h-[102px] mb-[-56px]'>
-                        <input type={`${ showPass ? 'text' : 'password' }`} id="pass" name="pass" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter Password' required></input>
+                        <input type={`${ showPass ? 'text' : 'password' }`} id="password" name="password" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter Password' onChange={changeHandler} required></input>
                         {
                             showPass ? (<FiEyeOff className=' z-[20] right-[210px] absolute  top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(false)}}/>) : (<FiEye className='z-[20] absolute right-[210px] top-4 text-richblack200 cursor-pointer ' onClick={()=>{setShowPass(true)}}></FiEye>)
                         }
@@ -84,9 +128,9 @@ const SignUpPage = () => {
                     <div className=' flex flex-col ml-[-160px]  '>
                         <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px] w-full'>Confirm Password <div className='ml-[5px] text-pink200'>*</div></div>
                         <div className=' relative h-[102px] mb-[-56px] '>
-                        <input type={`${ showPass ? 'text' : 'password' }`} id="pass" name="pass" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter Password' required></input>
+                        <input type={`${ showConfirmPass ? 'text' : 'password' }`} id="confirmPassword" name="confirmPassword" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter Password' onChange={changeHandler} required ></input>
                         {
-                            showPass ? (<FiEyeOff className=' z-[20] absolute right-[210px] top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(false)}}/>) : (<FiEye className='z-[20] absolute right-[210px] top-4  text-richblack200 cursor-pointer' onClick={()=>{setShowPass(true)}}></FiEye>)
+                            showConfirmPass ? (<FiEyeOff className=' z-[20] absolute right-[210px] top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowConfirmPass(false)}}/>) : (<FiEye className='z-[20] absolute right-[210px] top-4  text-richblack200 cursor-pointer'  onClick={()=>{setShowConfirmPass(true)}}></FiEye>)
                         }
                         
                       </div>
@@ -96,7 +140,7 @@ const SignUpPage = () => {
               </div>
               
               <div className='mt-[50px]'>
-              <Button content={"Create Account"} isYellow={true} hasArrow={false} width={464} ></Button>
+              <Button content={"Create Account"} isYellow={true} hasArrow={false} width={464} onClick={submitHandler} ></Button>
               </div>
               
               

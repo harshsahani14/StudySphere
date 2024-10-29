@@ -48,7 +48,7 @@ const LoginPage = () => {
                         }
                         <p className='absolute font-[600] text-[12px] leading-[20px]  text-blue200 bottom-7 right-0 cursor-pointer'>Forgot password</p>
                 </div><br></br><br></br>
-                <Button content={'Sign in'} isYellow={true} hasArrow={false} width={454} link={'/catalog'}></Button>
+                <Button content={'Sign in'} isYellow={true} hasArrow={false} width={444} link={'/catalog'}></Button>
                 
             </form>
             

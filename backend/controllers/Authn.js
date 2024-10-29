@@ -58,6 +58,8 @@ exports.sendOtp = async (req, res) => {
       otp: response,
     });
   } catch (e) {
+
+    console.log(e.message)
     return res.status(500).json({
       sucess: false,
       message: "Internal server error",

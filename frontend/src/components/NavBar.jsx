@@ -6,6 +6,7 @@ import { BsCart3 } from "react-icons/bs";
 import { apiCall } from '../apis/apiCall'
 import {categoryApiURL} from '../apis/apiUrl'
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import {toast} from "react-hot-toast"
 
 const NavBar = () => {
 
@@ -13,21 +14,25 @@ const NavBar = () => {
   const {user} = useSelector(state => state.profile)
   const {totalItems} = useSelector(state => state.cart)
 
-  // const [categories,setCategories] = useState([])
-  var categories = []
+  const [categories,setCategories] = useState([])
+  // var categories = []
 
 
   const fetchCategories = async ()=>{
 
     try{
       const result = await apiCall('GET',categoryApiURL.getAll)
-      console.log(result.data.category)
-      // setCategories([...result.data.category])
-      categories = [...result.data.category]
-      console.log(categories)  
+      setCategories( (state) =>{
+        
+        return [...result.data.category]
+      } )
+      // categories = [...result.data.category]
+       
+      toast.success("Categories fetched sucessfully")
     }
     catch(e){
       console.log(e.message)
+      toast.error("Could not fetch categories")
     }
   }
   useEffect( ()=>{
@@ -50,16 +55,19 @@ const NavBar = () => {
                 <p className=' font-[600] text-[16px] leading-[24px] text-richblack5'>Catalog</p>
                 <MdOutlineKeyboardArrowDown className=' text-richblack5 absolute bottom-3 right-0' />
                 
-                <div className=' invisible flex flex-col w-[280px] h-fit group-hover:visible bg-richblack5 absolute top-10 right-[-120px] opacity-0 group-hover:opacity-100 transition-all duration-300 px-[15px]  py-[15px] rounded-md '>
+                <div className=' invisible flex flex-col w-[280px] h-fit group-hover:visible bg-richblack5 absolute top-10 right-[-120px] opacity-0 group-hover:opacity-100 transition-all duration-300 px-[15px]  py-[15px] rounded-md z-50'>
                         <div className=' w-14 h-14 bg-richblack5  top-0 right-[99px] rotate-45 absolute   rounded-sm z-0 '></div>
                         
-                        <Link to={`/categories/python`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-10'>
+                        <Link to={`/categories/python`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-50'>
                             <div>Python</div>
                         </Link>
-                        <Link to={`/categories/devops`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-10'>
+                        <Link to={`/categories/devops`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-50'>
                         <div>Devops</div>
                         </Link>
-                      
+                      {
+                          
+                          console.log(categories)
+                      }
                     
                 </div>
             </div>
