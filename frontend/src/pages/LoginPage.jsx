@@ -16,8 +16,8 @@ const LoginPage = () => {
 
   return (
     
-    <div className=' bg-richblack900 w-full h-screen flex gap-[100px] justify-center items-center'>
-        <div className=' flex flex-col w-[508px] h-[562px] top-[174px] left-[120px] p-[32px] gap-[36px]'>
+    <div className=' bg-richblack900 w-full h-[679px] flex gap-[100px] justify-center items-center overflow-hidden'>
+        <div className=' flex flex-col w-[508px] h-[562px] top-[174px] left-[120px] p-[32px] gap-[36px] '>
 
             <div className=' w-[444px] h-[100px] flex flex-col gap-[12px]'
             >
@@ -38,7 +38,7 @@ const LoginPage = () => {
             </div>
             
             <form >
-                <div for="emailId" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></div>
+                <label for="emailId" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></label>
                 <input type="text" id="emailId" name="emailId" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter email address' required></input><br></br><br></br>
                 <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Password <div className='ml-[5px] text-pink200'>*</div></div>
                 <div className=' relative h-[102px] mb-[-56px]'>
@@ -48,7 +48,7 @@ const LoginPage = () => {
                         }
                         <p className='absolute font-[600] text-[12px] leading-[20px]  text-blue200 bottom-7 right-0 cursor-pointer'>Forgot password</p>
                 </div><br></br><br></br>
-                <Button content={'Sign in'} isYellow={true} hasArrow={false} width={444} link={'/catalog'}></Button>
+                <Button content={'Sign in'} isYellow={true} hasArrow={false} width={454} link={'/catalog'}></Button>
                 
             </form>
             

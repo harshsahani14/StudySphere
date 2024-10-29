@@ -1,15 +1,19 @@
 import React from 'react'
 import { useState } from 'react';
+import { FiPlus,FiEyeOff,FiEye } from "react-icons/fi";
+import Button from '../components/Button';
 
 
 const SignUpPage = () => {
 
   const [userType,setUserType] = useState('student');
+  const [showPass,setShowPass] = useState(false)
+
 
   return (
-    <div className=' bg-richblack900 h-screen flex gap-[100px]'>
+    <div className=' bg-richblack900 h-[130vh] flex gap-[100px]'>
       
-      <div className=' w-[508px]   p-[32px] flex flex-col  gap-[36px] mt-[40px] ml-[200px]'>
+      <div className=' w-[508px]  p-[32px] flex flex-col  gap-[36px] mt-[25px] ml-[200px]'>
         <div className=' flex flex-col gap-[12px] w-[444px] h-[114px] text-left'>
           <p className=' text-richblack5 font-[600] leading-[38px] text-[30px] '>Join the millions learning to code with StudyNotion for <br></br> free</p>
           <p></p>
@@ -30,12 +34,72 @@ const SignUpPage = () => {
           </div>
           
           
-          <form className=' mt-[30px]'>
+          <form className=' mt-[30px] w-[464px] '>
 
-              <div className='flex flex-row w-fit h-[106px] gap-[20px]'>
-                 
+              <div className='flex flex-row w-[444px] h-[76px] '>
+                <div>
+                   <label for="fName" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 flex mb-[10px] '>First Name<div className='ml-[5px] text-pink200 '>*</div></label>
+                    <input type="text" id="fName" name="fName" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter first name' required></input>
+                </div>
                   
+                  <div className=' ml-[-160px]'>
+                     <label for="lName" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 flex mb-[10px] '>Last Name<div className='ml-[5px] text-pink200 '>*</div></label>
+                      <input type="text" id="lName" name="lName" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' placeholder='Enter last name' required></input>
+                  </div>
               </div>
+                
+
+              <div className=' mt-[20px]'>
+                    <label for="emailId" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></label>
+                     <input type="text" id="emailId" name="emailId" className='mr-[200px] ml-[10px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 scale-x-105' placeholder='Enter email address' required></input>
+              </div>
+
+              <div className=' mt-[20px]'>
+                   <label for="phoneno" className='  w-full text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Phone Number <div className='ml-[5px] text-pink200'>*</div></label>
+
+                  <div className=' flex gap-[20px] w-[455px] h-[48px] '>
+
+                      <div className=' w-[81px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 '>
+                          <div className=' flex items-center  justify-center'>
+                            <FiPlus />
+                              91
+                          </div>
+                      </div>
+                      <input type="text" id="phoneno" name="phoneno" className=' w-full h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 scale-x-105 ml-[15px]' placeholder='12345 67890' required></input>
+                  </div>
+                   
+              </div>
+
+              <div className=' w-[444px] h-[76px]  flex mt-[20px] '>
+                    <div className='flex flex-col '>
+                        <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px] w-full'>Create Password <div className='ml-[5px] text-pink200'>*</div></div>
+                        <div className=' relative h-[102px] mb-[-56px]'>
+                        <input type={`${ showPass ? 'text' : 'password' }`} id="pass" name="pass" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter Password' required></input>
+                        {
+                            showPass ? (<FiEyeOff className=' z-[20] right-[210px] absolute  top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(false)}}/>) : (<FiEye className='z-[20] absolute right-[210px] top-4 text-richblack200 cursor-pointer ' onClick={()=>{setShowPass(true)}}></FiEye>)
+                        }
+                        </div>
+                    </div>
+                    
+                    <div className=' flex flex-col ml-[-160px]  '>
+                        <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px] w-full'>Confirm Password <div className='ml-[5px] text-pink200'>*</div></div>
+                        <div className=' relative h-[102px] mb-[-56px] '>
+                        <input type={`${ showPass ? 'text' : 'password' }`} id="pass" name="pass" className='mr-[200px] w-[212px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter Password' required></input>
+                        {
+                            showPass ? (<FiEyeOff className=' z-[20] absolute right-[210px] top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(false)}}/>) : (<FiEye className='z-[20] absolute right-[210px] top-4  text-richblack200 cursor-pointer' onClick={()=>{setShowPass(true)}}></FiEye>)
+                        }
+                        
+                      </div>
+                    </div>
+                    
+
+              </div>
+              
+              <div className='mt-[50px]'>
+              <Button content={"Create Account"} isYellow={true} hasArrow={false} width={464} ></Button>
+              </div>
+              
+              
           </form>
           
           
