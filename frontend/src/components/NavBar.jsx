@@ -10,7 +10,7 @@ import {toast} from "react-hot-toast"
 import { FaCaretDown } from "react-icons/fa";
 import { RiDashboard2Line } from "react-icons/ri";
 import { BiLogOut } from "react-icons/bi";
-import { setToken} from '../slices/authSlice';
+import { setLoading, setToken} from '../slices/authSlice';
 import { setUser } from '../slices/profileSlice';
 const NavBar = () => {
 
@@ -53,12 +53,14 @@ const NavBar = () => {
   } ,[])
 
   const clickHandler = ()=>{
+    dispatch(setLoading(true))
     dispatch(setToken(null))
     localStorage.removeItem("token")
     dispatch(setUser(null));
     localStorage.removeItem("user")
     toast.success("Logged out sucessfully")
     navigate("/")
+    dispatch(setLoading(false))
   }
 
   return (

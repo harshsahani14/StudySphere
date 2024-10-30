@@ -47,6 +47,10 @@ module.exports = {
       backgroundImage: {
         "invertedSq" : "url('assets/images/invertedSquareBg.png')"
       }
+    },
+    fontFamily:{
+      inter:["Inter","cursive"],
+      edu:["Edu SA Beginner","cursive"]
     }
   },
   plugins: [],

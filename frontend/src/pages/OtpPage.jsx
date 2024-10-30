@@ -13,7 +13,7 @@ import { authApiUrl } from '../apis/apiUrl';
 import {toast} from 'react-hot-toast'
 const OtpPage = () => {
 
-  const {loading,user} = useSelector(state => state.auth);
+  const {loading,signUpDetails} = useSelector(state => state.auth);
   const [otp, setOtp] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -26,14 +26,14 @@ const OtpPage = () => {
 
         
         const result = await apiCall("POST",authApiUrl.signup,{
-                                                            fName:user.firstName,
-                                                            lName:user.lastName,
-                                                            email:user.emailAddress,
+                                                            fName:signUpDetails.firstName,
+                                                            lName:signUpDetails.lastName,
+                                                            email:signUpDetails.emailAddress,
                                                             otp:otp,
-                                                            password:user.password,
-                                                            confirmPassword:user.confirmPassword,
-                                                            phone:user.phone,
-                                                            role:user.userType
+                                                            password:signUpDetails.password,
+                                                            confirmPassword:signUpDetails.confirmPassword,
+                                                            phone:signUpDetails.phone,
+                                                            role:signUpDetails.userType
                                                                 })
 
        console.log(result)
@@ -52,7 +52,7 @@ const OtpPage = () => {
 
     dispatch(setLoading(true))
     try{
-      await apiCall("POST",authApiUrl.sendOtp,{email : user.emailAddress})
+      await apiCall("POST",authApiUrl.sendOtp,{email : signUpDetails.emailAddress})
       toast.success("Otp sent to mail")
     }
     catch(e){

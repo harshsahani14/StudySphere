@@ -47,8 +47,9 @@ const LoginPage = () => {
             localStorage.setItem("user",JSON.stringify({...result.data.user}))
             
             console.log(localStorage.getItem("user"))
-            navigate("/dashboard/myProfile")
+            
             toast.success("Login successful")
+            navigate("/dashboard/myProfile")
         }
         catch(e){
             console.log(e.message);
@@ -88,7 +89,7 @@ const LoginPage = () => {
                                         userType === 'student' ? `Build skills for today, tomorrow, and beyond.` : 'Discover your passions.'
                                     }
                                     {
-                                        userType === 'student' ? (<span className='font-[700] text-[16px] leading-[24px] text-blue200'>Education to your future proof career</span>) : (<p className='font-[700] text-[16px] leading-[24px] text-blue200'> Be unstoppable</p>)
+                                        userType === 'student' ? (<span className='font-[700] text-[16px] leading-[24px] text-blue200 font-edu'>Education to your future proof career</span>) : (<p className='font-[700] text-[16px] leading-[24px] text-blue200 font-edu'> Be unstoppable</p>)
                                     }
                                 </p>
                             </div>
@@ -110,7 +111,7 @@ const LoginPage = () => {
                                         <Link to={'/forgotpassword'} className='absolute font-[600] text-[12px] leading-[20px]  text-blue200 bottom-7 right-0 cursor-pointer'>Forgot password</Link>
                                         
                                 </div><br></br><br></br>
-                                <Button content={'Sign in'} isYellow={true} hasArrow={false} width={444} link={'/catalog'} onClick={clickHandler}></Button>
+                                <Button content={'Sign in'} isYellow={true} hasArrow={false} width={444}  onClick={clickHandler}></Button>
                                 
                             </form>
 

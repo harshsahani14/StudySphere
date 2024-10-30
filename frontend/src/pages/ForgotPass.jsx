@@ -70,7 +70,7 @@ const ForgotPass = () => {
 
                         <button className=' bg-yellow w-[444px] h-[48px] rounded-[8px] p-[12px] flex justify-center items-center mt-[40px] text-[16px] text-richblack900 font-[500]' onClick={clickHandler}>
                             {
-                                emailSent ? "Reset Password" : "Resend mail"
+                                emailSent ? "Resend mail" : "Reset password"
                             }
                         </button>
                     </form>

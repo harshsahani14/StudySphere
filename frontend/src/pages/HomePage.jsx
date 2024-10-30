@@ -72,8 +72,8 @@ const HomePage = () => {
                 </Link>
                 
 
-                <h1 className=' text-center text-[36px] text-richblack5 font-semibold'>Empower Your Future with <HighLightText text={"Coding Skills"}></HighLightText></h1>
-                <p className=' text-center text-md font-[500] text-[16px] leading-[24px] text-richblack200'>With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.</p>
+                <h1 className=' text-center text-[36px] text-richblack5 font-semibold font-inter'>Empower Your Future with <HighLightText text={"Coding Skills"}></HighLightText></h1>
+                <p className=' text-center text-md font-[500] text-[16px] leading-[24px] text-richblack200 font-inter'>With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.</p>
 
 
                 <div className='w-[308px] h-[48px] flex gap-[24px]'> 
