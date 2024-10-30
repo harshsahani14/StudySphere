@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import { useState } from 'react'
 import { FiEye,FiEyeOff } from 'react-icons/fi'
@@ -7,12 +7,14 @@ import Button from '../components/Button'
 import { apiCall } from '../apis/apiCall'
 import { authApiUrl } from '../apis/apiUrl'
 import toast from 'react-hot-toast'
-import { setLoading } from '../slices/authSlice'
+import { setLoading, setToken } from '../slices/authSlice'
 import { useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 
 const NewPassword = () => {
+
+    const dispatch = useDispatch()
 
     const {loading} = useSelector(state => state.auth)
     const [showPass,setShowPass] = useState(false);
@@ -37,12 +39,13 @@ const NewPassword = () => {
     const clickHandler = async ()=>{
 
 
-        setLoading(true)
+        dispatch(setLoading(true))
         try{
             const token = location.pathname.split('/').at(2)
             console.log(token)
             const result = await apiCall("PUT",authApiUrl.resetPasswordStep2,{...form,token})
 
+            dispatch(setToken(result.data.token))
             toast.success("Password updated successfully")
 
         }
@@ -50,7 +53,7 @@ const NewPassword = () => {
             toast.error("Could not update password")
             console.log(e.message)
         }
-        setLoading(false)
+        dispatch(setLoading(false))
 
     }
   return (

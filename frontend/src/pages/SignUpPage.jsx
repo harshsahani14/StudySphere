@@ -6,11 +6,14 @@ import { useNavigate } from 'react-router';
 import { apiCall } from '../apis/apiCall'
 import {authApiUrl} from '../apis/apiUrl'
 import toast from 'react-hot-toast';
+import { setLoading, setUser } from '../slices/authSlice';
+import { useDispatch } from 'react-redux';
 
 const SignUpPage = () => {
 
 
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
 
   const [userType,setUserType] = useState('student');
@@ -23,7 +26,6 @@ const SignUpPage = () => {
     phone:"",
     password:"",
     confirmPassword:"",
-    role:userType,
   });
 
   function changeHandler(event){
@@ -41,17 +43,32 @@ const SignUpPage = () => {
 
     event.preventDefault();
 
+    if(Object.values(form).some(value => 
+      value === ""
+    )){
+      toast.error('Please fill all the fields');
+      return;
+    }
 
-    navigate("/submitotp");
-    console.log(form)
+    if(form.password !== form.confirmPassword){
+      toast.error("Password mismatch")
+      return
+    }
+
+
+    
+    dispatch(setLoading(true))
     try{
       await apiCall("POST",authApiUrl.sendOtp,{email : form.emailAddress})
+      dispatch(setUser({...form,userType}))
+      navigate("/submitotp");
       toast.success("Otp sent to mail")
     }
     catch(e){
       console.log(e.message)
       toast.error("Could not send otp")
     }
+    dispatch(setLoading(false))
 
   }
 

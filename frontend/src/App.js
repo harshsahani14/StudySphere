@@ -24,7 +24,7 @@ function App() {
         <Route path="/catalog" element={<CatalogPage></CatalogPage>}></Route>
         <Route path="/aboutus" element={<AboutusPage></AboutusPage>}></Route>
         <Route path="/contactus" element={<ContactusPage></ContactusPage>}></Route>
-        <Route path="/sumbitotp" element={<OtpPage></OtpPage>}></Route>
+        <Route path="/submitotp" element={<OtpPage></OtpPage>}></Route>
         <Route path="/forgotpassword" element={<ForgotPass></ForgotPass>}></Route>
         <Route path="/updatePassword/:id" element={<NewPassword></NewPassword>}></Route>
       </Routes>

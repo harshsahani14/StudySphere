@@ -11,6 +11,7 @@ import {toast} from "react-hot-toast"
 const NavBar = () => {
 
   const {token} = useSelector(state => state.auth)
+  
   const {user} = useSelector(state => state.profile)
   const {totalItems} = useSelector(state => state.cart)
 
@@ -28,7 +29,7 @@ const NavBar = () => {
       } )
       // categories = [...result.data.category]
        
-      toast.success("Categories fetched sucessfully")
+      
     }
     catch(e){
       console.log(e.message)
@@ -64,6 +65,7 @@ const NavBar = () => {
                         <Link to={`/categories/devops`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-50'>
                         <div>Devops</div>
                         </Link>
+                        {/* Map categories here */}
                       {
                           
                           console.log(categories)
@@ -86,22 +88,29 @@ const NavBar = () => {
 
       <div className=' w-[160px] h-[29.88px] flex flex-end gap-[20px] items-center'>
             {
-               (token!=null && token.role == "student") ? (<BsCart3 className='relative'>
+
+                
+               (token!=null ) ? (<BsCart3 className='relative w-[3rem] h-[3rem]  '>
 
                   {
                       totalItems>0 ? (<div>{totalItems}</div>) : (<div className=' hidden'></div>)
                   }
-               </BsCart3>) : 
+               </BsCart3>) 
+               :
+
                (<Link to={"/login"}>
                     <button className=' w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5'   >Log in</button>
                 </Link>)
+
             }
 
             {
-              (token!=null ) ? (<img></img>) : (<Link to={"/signup"}>
+              (token!=null ) ? (<div > Yes</div>) : (<Link to={"/signup"}>
 
                 <button className=' w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5'> Sign up</button>
               </Link>)
+
+
             }
       </div>
       
