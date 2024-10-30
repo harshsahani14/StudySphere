@@ -10,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import { setLoading, setToken } from '../slices/authSlice';
+import { setUser } from '../slices/profileSlice';
 import { apiCall } from '../apis/apiCall';
 import { authApiUrl } from '../apis/apiUrl';
 import {toast} from "react-hot-toast"
@@ -38,13 +39,16 @@ const LoginPage = () => {
 
             const result = await apiCall("POST",authApiUrl.login,form);
 
-            console.log(result)
+            console.log(result.data.user)
 
             localStorage.setItem("token",result.data.token)
             dispatch(setToken(result.data.token))
-
+            dispatch(setUser(result.data.user))
+            localStorage.setItem("user",JSON.stringify({...result.data.user}))
+            
+            console.log(localStorage.getItem("user"))
             navigate("/dashboard/myProfile")
-            toast.success("Login successfull")
+            toast.success("Login successful")
         }
         catch(e){
             console.log(e.message);

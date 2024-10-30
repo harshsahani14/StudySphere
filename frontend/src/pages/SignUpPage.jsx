@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router';
 import { apiCall } from '../apis/apiCall'
 import {authApiUrl} from '../apis/apiUrl'
 import toast from 'react-hot-toast';
-import { setLoading, setUser } from '../slices/authSlice';
+import { setLoading } from '../slices/authSlice';
+import { setUser } from '../slices/profileSlice';
 import { useDispatch } from 'react-redux';
 
 const SignUpPage = () => {

@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import websiteLogo from '../assets/images/websiteLogo.png'
-import { Link, NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { BsCart3 } from "react-icons/bs";
 import { apiCall } from '../apis/apiCall'
 import {categoryApiURL} from '../apis/apiUrl'
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import {toast} from "react-hot-toast"
-
+import { FaCaretDown } from "react-icons/fa";
+import { RiDashboard2Line } from "react-icons/ri";
+import { BiLogOut } from "react-icons/bi";
+import { setToken} from '../slices/authSlice';
+import { setUser } from '../slices/profileSlice';
 const NavBar = () => {
 
   const {token} = useSelector(state => state.auth)
-  
   const {user} = useSelector(state => state.profile)
+
   const {totalItems} = useSelector(state => state.cart)
 
   const [categories,setCategories] = useState([])
   // var categories = []
-
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const fetchCategories = async ()=>{
 
@@ -28,7 +33,6 @@ const NavBar = () => {
         return [...result.data.category]
       } )
       // categories = [...result.data.category]
-       
       
     }
     catch(e){
@@ -39,6 +43,23 @@ const NavBar = () => {
   useEffect( ()=>{
       fetchCategories()
   },[])
+
+  useEffect( ()=>{
+    const user = localStorage.getItem("user");
+    console.log(user)
+        if (user) {
+            setUser(user);
+        }
+  } ,[])
+
+  const clickHandler = ()=>{
+    dispatch(setToken(null))
+    localStorage.removeItem("token")
+    dispatch(setUser(null));
+    localStorage.removeItem("user")
+    toast.success("Logged out sucessfully")
+    navigate("/")
+  }
 
   return (
     <div className=' flex items-center w-full h-[56px] border-b-[1px] border-richblack600 bg-richblack900  gap-[32px] justify-around relative '>
@@ -59,16 +80,18 @@ const NavBar = () => {
                 <div className=' invisible flex flex-col w-[280px] h-fit group-hover:visible bg-richblack5 absolute top-10 right-[-120px] opacity-0 group-hover:opacity-100 transition-all duration-300 px-[15px]  py-[15px] rounded-md z-50'>
                         <div className=' w-14 h-14 bg-richblack5  top-0 right-[99px] rotate-45 absolute   rounded-sm z-0 '></div>
                         
-                        <Link to={`/categories/python`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-50'>
+                        {/* <Link to={`/categories/python`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-50'>
                             <div>Python</div>
-                        </Link>
-                        <Link to={`/categories/devops`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-50'>
-                        <div>Devops</div>
-                        </Link>
+                        </Link> */}
+                        
                         {/* Map categories here */}
                       {
                           
-                          console.log(categories)
+                          categories.length>0 ? (categories.map((category,idx)=>(
+                            <Link to={`/categories/${category.name}`} className=' w-full h-[50px] text-richblack900 text-[16px] flex font-[600] items-center text-left pl-[13px]  hover:bg-richblack50 rounded-md z-50' key={idx}>
+                            <div>{category.name}</div>
+                            </Link>
+                          ))) : (<div></div>)
                       }
                     
                 </div>
@@ -90,7 +113,7 @@ const NavBar = () => {
             {
 
                 
-               (token!=null ) ? (<BsCart3 className='relative w-[3rem] h-[3rem]  '>
+               (user!=null && user.role == "student" ) ? (<BsCart3 className='relative w-[20px] h-[20px]  text-richblack5 cursor-pointer   '>
 
                   {
                       totalItems>0 ? (<div>{totalItems}</div>) : (<div className=' hidden'></div>)
@@ -105,7 +128,22 @@ const NavBar = () => {
             }
 
             {
-              (token!=null ) ? (<div > Yes</div>) : (<Link to={"/signup"}>
+              (token!=null ) ? (<div className='flex gap-2 justify-center items-center group cursor-pointer relative '>
+                  <img src={user.img} className=' w-[29.82px] h-[29.82px] rounded-full cursor-pointer'>
+                  </img>
+                  <FaCaretDown className=' w-[15px] h-[15px] text-richblack5' />
+                  <div className=' group-hover:visible invisible w-fit h-fit flex flex-col bg-richblack800 rounded-md opacity-0 group-hover:opacity-100 absolute bottom-[-95px] left-[-100px] p-[5px]   '>
+                    <div className=' flex justify-center items-center w-[150px] h-[30px] hover:bg-richblack600 p-[20px] rounded-md gap-1'>
+                      <RiDashboard2Line className=' w-[16px] h-[16px] text-richblack5'></RiDashboard2Line>
+                      <p className=' text-richblack5 text-[16px] font-[500]' >DashBoard</p>
+                    </div>
+                    <div className=' flex justify-center items-center w-[150px] h-[30px]  hover:bg-richblack600 p-[20px] rounded-md gap-1' onClick={clickHandler}>
+                      <BiLogOut className=' w-[16px] h-[16px] text-richblack5 '></BiLogOut>
+                      <p className=' text-richblack5 text-[16px] font-[500]'>Logout</p>
+                    </div>
+                    <div></div>
+                  </div>
+              </div>) : (<Link to={"/signup"}>
 
                 <button className=' w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5'> Sign up</button>
               </Link>)

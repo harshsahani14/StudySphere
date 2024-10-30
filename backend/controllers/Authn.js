@@ -172,7 +172,7 @@ exports.login = async (req, res) => {
       });
     }
     //  User exists or not
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate("profile");
 
     if (!user) {
       return res.status(400).json({
@@ -203,7 +203,8 @@ exports.login = async (req, res) => {
       res.cookie("token", token, options).status(200).json({
         sucess: true,
         message: "Logged in succesfully",
-        token:token
+        token:token,
+        user:user
       });
     } else {
       return res.status(401).json({

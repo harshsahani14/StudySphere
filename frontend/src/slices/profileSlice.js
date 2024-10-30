@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    user : null
+
+    // Issue while reloading page cannot fetch user object
+    user : localStorage.getItem("user")  
 }
 
 const profileSlice = createSlice({
