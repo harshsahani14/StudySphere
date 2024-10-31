@@ -8,6 +8,7 @@ module.exports = {
       'richblack100':"#AFB2BF",
       'richblack200':'#999DAA',
       'richblack300':'#838894',
+      'richblack500':'#585D69',
       'richblack600':'#424854',
       'richblack700':"#2C333F",
       'richblack900':'#000814',
@@ -38,7 +39,9 @@ module.exports = {
       'homepageBox2':'12px 12px 0px 0px rgba(79,10,37,0.1)',
       'homepageBox3':'12px 12px 0px 0px rgba(65, 38, 11, 0.1)',
       'homePageUpperBox': '12px 12px 0px 0px rgba(255, 214, 10, 1)',
-      'toggle':'0px 1px 0px 0px rgba(255, 255, 255, 1.8)'
+      'toggle':'0px 1px 0px 0px rgba(255, 255, 255, 1.8)',
+
+
       
 
     },
