@@ -11,3 +11,7 @@ export const authApiUrl = {
     signup : `${BASE_URL}/signup`,
     login : `${BASE_URL}/login`
 }
+
+export const contactUsApiURL = {
+    contactUs: `${BASE_URL}/contactUs`
+}

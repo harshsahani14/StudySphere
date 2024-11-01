@@ -5,6 +5,9 @@ import AboutUsImg2 from "../assets/images/AboutUsImg2.png"
 import AboutUsImg3 from "../assets/images/AboutUsImg3.png"
 import AboutUsImg4 from "../assets/images/AboutUsImg4.png"
 import HeadingAndText from '../components/HeadingAndText'
+import Button from '../components/Button'
+import AboutUsBox from '../components/AboutUsBox'
+import ContactUsForm from '../components/core/ContactUsPage/ContactUsForm'
 
 
 const AboutusPage = () => {
@@ -88,10 +91,48 @@ const AboutusPage = () => {
       </div>
 
       {/* Section 4 */}
-      <div className=' w-full h-[768px] px-[120px] py-[90px] bg-richblack900  '></div>
+      <div className=' w-full h-[768px] px-[120px] py-[90px] bg-richblack900  '>
+
+        
+
+          <div className='flex flex-col gap-0  '>
+
+                <div className='flex'>
+                    <div className='w-[589px] h-[268px] flex flex-col gap-[12px]'>
+                        <p className=' text-[36px] leading-[44px] text-left font-[600] font-inter text-richblack5'>World-Class Learning for <br></br><HighLightText text={"Anyone, Anywhere"}></HighLightText></p>
+                        <div className=' w-[559px] h-[168px] gap-[12px] flex flex-col '>
+
+                          <p className=' font-[500] font-inter text-[16px] leading-[24px] text-richblack300 text-left'>Studynotion partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.</p>
+
+                          <div className=' mt-[35px]'>
+                          <Button content={"Learn More "} isYellow={true} hasArrow={false}></Button>
+                          </div>
+                          
+                        </div>
+
+                    </div>
+
+                    <AboutUsBox heading={"Curriculum Based on Industry Needs"} para={"Save time and money! The Belajar curriculum is made to be easier to understand and in line with industry needs."} isRichBlack700={true}></AboutUsBox>
+                    <AboutUsBox heading={" Our Learning Methods"} para={"The learning process uses the namely online and offline."} isRichBlack700={false}></AboutUsBox>
+                    </div>
+                
+              </div>
+              <div className=' flex gap-0'>
+                  <div className=' bg-richblack900 w-[294.5px] h-[294px]'></div>
+                  <AboutUsBox heading={"Certification"} para={"You will get a certificate that can be used as a certification during job hunting."} isRichBlack700={true}></AboutUsBox>
+                  <AboutUsBox heading={"Rating Auto-grading"} para={"You will immediately get feedback during the learning process without having to wait for an answer or response from the mentor."} isRichBlack700={false}></AboutUsBox>
+                  <AboutUsBox heading={"Ready to Work"} para={"Connected with over 150+ hiring partners, you will have the opportunity to find a job after graduating from our program."} isRichBlack700={true}></AboutUsBox>
+                  
+
+              </div>
+          
+          
+      </div>
 
       {/* Section 5 */}
-      <div></div>
+      <div className=' w-full h-[805px] pt-[90px] px-[420px]  bg-richblack900 '>
+        <ContactUsForm heading={"Get in touch"} para={"We’d love to here for you, Please fill out this form."}></ContactUsForm>
+      </div>
 
     </div>
   )
