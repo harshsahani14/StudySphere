@@ -15,3 +15,8 @@ export const authApiUrl = {
 export const contactUsApiURL = {
     contactUs: `${BASE_URL}/contactUs`
 }
+
+export const profileApiURL = {
+    getUserDetails: `${BASE_URL}/getUserDetails`
+}
+

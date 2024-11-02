@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    token : localStorage.getItem("token"),
+    token : localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null,
     loading:false,
     signUpDetails:null
 }
@@ -19,8 +19,6 @@ const authSlice = createSlice({
         setsignUpDetails(state,value){
             state.signUpDetails=value.payload
         },
-        
-        
     }
 })
 

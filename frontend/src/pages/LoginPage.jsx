@@ -10,11 +10,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import { setLoading, setToken } from '../slices/authSlice';
-import { setUser } from '../slices/profileSlice';
+import { setUserImg, setUser } from '../slices/profileSlice';
 import { apiCall } from '../apis/apiCall';
 import { authApiUrl } from '../apis/apiUrl';
 import {toast} from "react-hot-toast"
-
 
 const LoginPage = () => {
 
@@ -39,14 +38,14 @@ const LoginPage = () => {
 
             const result = await apiCall("POST",authApiUrl.login,form);
 
-            console.log(result.data.user)
 
-            localStorage.setItem("token",result.data.token)
-            dispatch(setToken(result.data.token))
-            dispatch(setUser(result.data.user))
+            localStorage.setItem("token",JSON.stringify(result.data.token))
+            dispatch(setToken(JSON.stringify(result.data.token)))
+
+            const userImg = result.data.user.img ? result.data.user.img : `https://api.dicebear.com/5.x/initials/svg?seed=${result.data.user.firstName} ${result.data.user.firstName}`
+
+            dispatch(setUser({...result.data.user,img:userImg}))
             localStorage.setItem("user",JSON.stringify({...result.data.user}))
-            
-            console.log(localStorage.getItem("user"))
             
             toast.success("Login successful")
             navigate("/dashboard/myProfile")

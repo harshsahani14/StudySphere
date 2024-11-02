@@ -15,7 +15,7 @@ const AboutusPage = () => {
     <div >
 
       {/* Section 1 */}
-      <div className=' w-full h-[618px] bg-richblack800 flex flex-col  pt-[80px] px-[120px] gap-[52px] items-center'>
+      <div className=' w-full h-[618px] bg-richblack700 flex flex-col  pt-[80px] px-[120px] gap-[52px] items-center'>
           <div className=' w-[1200px] h-[258px] gap-[38px] flex flex-col'>
 
               <div className=' flex w-[113px] h-[44px] p-[4px] gap-[5px] font-inter text-center text-[16px] leading-[24px] font-[500] text-richblack200 mx-auto'>About us</div>

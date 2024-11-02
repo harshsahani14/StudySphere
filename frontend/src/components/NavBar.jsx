@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { BsCart3 } from "react-icons/bs";
 import { apiCall } from '../apis/apiCall'
-import {categoryApiURL} from '../apis/apiUrl'
+import {categoryApiURL, profileApiURL} from '../apis/apiUrl'
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import {toast} from "react-hot-toast"
 import { FaCaretDown } from "react-icons/fa";
@@ -16,6 +16,7 @@ const NavBar = () => {
 
   const {token} = useSelector(state => state.auth)
   const {user} = useSelector(state => state.profile)
+
 
   const {totalItems} = useSelector(state => state.cart)
 
@@ -40,19 +41,14 @@ const NavBar = () => {
       toast.error("Could not fetch categories")
     }
   }
+
+
   useEffect( ()=>{
       fetchCategories()
   },[])
 
-  useEffect( ()=>{
-    const user = localStorage.getItem("user");
-    console.log(user)
-        if (user) {
-            setUser(user);
-        }
-  } ,[])
-
   const clickHandler = ()=>{
+    const toastId = toast.loading("Loading");
     dispatch(setLoading(true))
     dispatch(setToken(null))
     localStorage.removeItem("token")
@@ -61,6 +57,7 @@ const NavBar = () => {
     toast.success("Logged out sucessfully")
     navigate("/")
     dispatch(setLoading(false))
+    toast.dismiss(toastId)
   }
 
   return (
@@ -115,17 +112,13 @@ const NavBar = () => {
             {
 
                 
-               (user!=null && user.role == "student" ) ? (<BsCart3 className='relative w-[20px] h-[20px]  text-richblack5 cursor-pointer   '>
+               (user!==null && user.role === "student" ) && (<BsCart3 className='relative w-[20px] h-[20px]  text-richblack5 cursor-pointer   '>
 
                   {
                       totalItems>0 ? (<div>{totalItems}</div>) : (<div className=' hidden'></div>)
                   }
                </BsCart3>) 
-               :
-
-               (<Link to={"/login"}>
-                    <button className=' w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5'   >Log in</button>
-                </Link>)
+               
 
             }
 
@@ -137,7 +130,7 @@ const NavBar = () => {
                   <div className=' group-hover:visible invisible w-fit h-fit flex flex-col bg-richblack800 rounded-md opacity-0 group-hover:opacity-100 absolute bottom-[-95px] left-[-100px] p-[5px]   '>
                     <div className=' flex justify-center items-center w-[150px] h-[30px] hover:bg-richblack600 p-[20px] rounded-md gap-1'>
                       <RiDashboard2Line className=' w-[16px] h-[16px] text-richblack5'></RiDashboard2Line>
-                      <p className=' text-richblack5 text-[16px] font-[500]' >DashBoard</p>
+                      <Link to={'/dashboard/myProfile'} className=' text-richblack5 text-[16px] font-[500]' >DashBoard</Link>
                     </div>
                     <div className=' flex justify-center items-center w-[150px] h-[30px]  hover:bg-richblack600 p-[20px] rounded-md gap-1' onClick={clickHandler}>
                       <BiLogOut className=' w-[16px] h-[16px] text-richblack5 '></BiLogOut>
@@ -145,10 +138,19 @@ const NavBar = () => {
                     </div>
                     <div></div>
                   </div>
-              </div>) : (<Link to={"/signup"}>
+              </div>) : (
+                
+                <div className='flex gap-3 justify-start items-center  '>
+                <Link to={"/login"}>
+                    <button className=' w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5'   >Log in</button>
+                </Link>
+                
+                <Link to={"/signup"}>
 
                 <button className=' w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5'> Sign up</button>
-              </Link>)
+              </Link>
+              </div>
+            )
 
 
             }

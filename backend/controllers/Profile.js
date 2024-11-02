@@ -127,6 +127,7 @@ exports.getUserDetails = async(req,res) => {
             message:"Internal server error",
             error:e.message   
         })
+        
     }
 }
 
