@@ -2,13 +2,14 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FiEdit } from "react-icons/fi";
+import EditButton from './EditButton';
 
 const MyProfile = () => {
 
     const {user} = useSelector((state)=> state.profile)
 
   return (
-    <div className='w-full h-screen bg-richblack900'>
+    <div className='w-full h-[679px] overflow-y-hidden bg-richblack900'>
         
         <div className='w-[1217px] h-[120px] py-[24px] pl-[24px] pr-[120px] flex flex-col gap-[24px]'>
             <div className='w-[1073px] h-[22px] flex gap-[8px]'>
@@ -33,12 +34,37 @@ const MyProfile = () => {
                 </div>
 
                 </div>
-                <Link to={'/dashboard/settings'}>
-                <button className='w-[96px] h-[40px] bg-yellow rounded-[8px] py-[8px] px-[20px] flex gap-[8px] items-center'>
-                    <FiEdit className='w-[18px] h-[18px]'></FiEdit>
-                    <p className='font-inter font-[500] text-[16px] leading-[24px] text-center text-richblack900'>Edit</p>
-                </button>
-                </Link>
+                <EditButton></EditButton>
+            </div>
+
+            <div className='w-[792px] h-[220px] rounded-[8px] border-[1px] p-[24px] flex flex-col gap-[20px] border-richblack700 bg-richblack800'>
+                <div className='w-[744px] h-[40px] flex gap-[20px] justify-between'>
+                    <p className='font-inter font-[600] text-[18px] leading-[26px] text-richblack5'>Personal Details</p>
+                    <EditButton></EditButton>
+                </div>
+                <div className='w-[744px] h-[46px] flex gap-[4px]'>
+                    <div className='w-[370px] h-[46px] gap-[2px] flex flex-col'>
+                        <p className=' font-inter font-[400] text-[14px] leading-[22px] text-richblack600'>First Name</p>
+                        <p className='font-inter font-[500] text-[14px] leading-[22px] text-richblack5'>{user.firstName}</p>
+                    </div>
+                    <div className='w-[370px] h-[46px] gap-[2px] flex flex-col'>
+                        <p className=' font-inter font-[400] text-[14px] leading-[22px] text-richblack600'>Last Name</p>
+                        <p className='font-inter font-[500] text-[14px] leading-[22px] text-richblack5'>{user.lastName}</p>
+                    </div>
+
+                </div>
+
+                <div className='w-[744px] h-[46px] flex gap-[4px]'>
+                    <div className='w-[370px] h-[46px] gap-[2px] flex flex-col'>
+                        <p className=' font-inter font-[400] text-[14px] leading-[22px] text-richblack600'>Email</p>
+                        <p className='font-inter font-[500] text-[14px] leading-[22px] text-richblack5'>{user.email}</p>
+                    </div>
+                    <div className='w-[370px] h-[46px] gap-[2px] flex flex-col'>
+                        <p className=' font-inter font-[400] text-[14px] leading-[22px] text-richblack600'>Phone Number</p>
+                        <p className='font-inter font-[500] text-[14px] leading-[22px] text-richblack5'>(+91)&nbsp; {user.phone}</p>
+                    </div>
+
+                </div>
             </div>
             
         </div>

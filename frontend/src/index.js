@@ -9,6 +9,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
+import LogoutModal from './components/core/DashBoard/LogoutModal';
 
 const store = configureStore({
   reducer: rootReducer
@@ -20,6 +21,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
           <App />
+          <LogoutModal/>
           <Toaster />
       </BrowserRouter>
     </Provider>

@@ -18,6 +18,7 @@ import EnrolledCourses from './components/core/DashBoard/EnrolledCourses';
 import WishList from './components/core/DashBoard/WishList';
 import PurchaseHistory from './components/core/DashBoard/PurchaseHistory';
 import Courses from './components/core/DashBoard/Courses';
+import Settings from './components/core/DashBoard/Settings';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route path="wishlist" element={<WishList/>}></Route>
             <Route path="purchaseHistory" element={<PurchaseHistory/>}></Route>
             <Route path="courses" element={<Courses></Courses>}></Route>
+            <Route path="settings" element={<Settings></Settings>}></Route>
         </Route>
         <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
       </Routes>
