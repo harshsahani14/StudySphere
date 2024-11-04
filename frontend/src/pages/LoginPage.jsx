@@ -8,7 +8,7 @@ import loginPagePhoto1 from '../assets/images/loginPagePhoto1.png'
 import loginPagePhoto2 from '../assets/images/loginPagePhoto2.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Loader from '../components/Loader';
+import Loader from '../components/common/Loader'
 import { setLoading, setToken } from '../slices/authSlice';
 import { setUserImg, setUser } from '../slices/profileSlice';
 import { apiCall } from '../apis/apiCall';

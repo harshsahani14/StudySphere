@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../components/Loader';
+import Loader from '../components/common/Loader'
 import OtpInput from 'react-otp-input';
 import { useState } from 'react';
 import Button from '../components/Button';

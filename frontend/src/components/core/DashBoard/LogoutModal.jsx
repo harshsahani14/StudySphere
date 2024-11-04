@@ -57,7 +57,7 @@ const LogoutModal = () => {
         <h1 className=' text-richblack5 text-[24px] font-inter font-[600]'>Are you sure?</h1>
         <p className=' text-richblack300 font-inter font-[400] text-[14px] mt-[15px] '>You will be logged out of your account</p>
         <button className='bg-yellow w-[125px] h-[40px] rounded-md mt-10 font-inter text-richblack900 font-[500]' onClick={clickHandler}>Logout</button>
-        <button className='bg-richblack600 w-[125px] h-[40px] rounded-md mt-10 font-inter text-richblack900 font-[500] ml-2' onClick={()=>dispatch(setshowLogOutModal(false))}>Cancel</button>
+        <button className='bg-richblack600 w-[125px] h-[40px] rounded-md mt-10 font-inter text-richblack5 font-[500] ml-2' onClick={()=>dispatch(setshowLogOutModal(false))}>Cancel</button>
       </Modal>
     </div>
   )

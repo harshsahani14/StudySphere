@@ -17,6 +17,8 @@ export const contactUsApiURL = {
 }
 
 export const profileApiURL = {
-    getUserDetails: `${BASE_URL}/getUserDetails`
+    getUserDetails: `${BASE_URL}/getUserDetails`,
+    getEnrolledCourses : `${BASE_URL}/getEnrolledCourses`,
+    updateDisplayPicture : `${BASE_URL}/updateDisplayPicture`
 }
 

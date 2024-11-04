@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import { setLoading } from '../slices/authSlice';
 import {setsignUpDetails} from "../slices/authSlice"
 import { useDispatch, useSelector } from 'react-redux';
-import Loader from '../components/Loader';
+import Loader from '../components/common/Loader'
 
 const SignUpPage = () => {
 

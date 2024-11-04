@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FiEdit } from "react-icons/fi";
 import EditButton from './EditButton';
+import Heading from './Heading';
 
 const MyProfile = () => {
 
@@ -11,17 +12,9 @@ const MyProfile = () => {
   return (
     <div className='w-full h-[679px] overflow-y-hidden bg-richblack900'>
         
-        <div className='w-[1217px] h-[120px] py-[24px] pl-[24px] pr-[120px] flex flex-col gap-[24px]'>
-            <div className='w-[1073px] h-[22px] flex gap-[8px]'>
-                <p className='text-richblack300 font-inter font-[400] text-[14px] leading-[22px]'>Home</p>
-                <p className='text-richblack300 font-inter font-[400] text-[14px] leading-[22px]'>/</p>
-                <p className='text-richblack300 font-inter font-[400] text-[14px] leading-[22px]'>Dashboard</p>
-                <p className='text-richblack300 font-inter font-[400] text-[14px] leading-[22px]'>/</p>
-                <p className='text-yellow font-inter font-[400] text-[14px] leading-[22px]'>My Profile</p>
-            </div>
+        <Heading title={"My profile"} heading={"My Profile"}></Heading>
 
-            <div className='font-inter font-[500] text-[30px] leading-[38px] text-richblack5 '>My Profile</div>
-        </div>
+            
 
         <div className='w-[792px] h-[366px] flex flex-col gap-[44px] ml-[140px] mt-[60px]'>
             <div className='w-[792px] h-[126px] rounded-[8px] p-[24px] flex gap-[20px] bg-richblack800 border-[1px] border-richblack700 items-center'>
@@ -69,6 +62,7 @@ const MyProfile = () => {
             
         </div>
     </div>
+    
   )
 }
 

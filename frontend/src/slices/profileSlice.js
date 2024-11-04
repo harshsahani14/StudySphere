@@ -4,7 +4,8 @@ const initialState = {
 
     // Issue while reloading page cannot fetch user object
     user : localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
-    showLogOutModal:false
+    showLogOutModal:false,
+    loading:false,
 }
 
 const profileSlice = createSlice({
@@ -16,11 +17,14 @@ const profileSlice = createSlice({
         },
         setshowLogOutModal(state,value){
             state.showLogOutModal=value.payload
+        },
+        setLoading(state,value){
+            state.loading=value.payload
         }
         
     }
 })
 
-export const {setUser,setshowLogOutModal} = profileSlice.actions;
+export const {setUser,setshowLogOutModal,setLoading} = profileSlice.actions;
 export default profileSlice.reducer;
 

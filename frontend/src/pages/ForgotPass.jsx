@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../components/Loader'
+import Loader from '../components/common/Loader'
 import {setLoading} from '../slices/authSlice'
 import { apiCall } from '../apis/apiCall'
 import { authApiUrl } from '../apis/apiUrl'

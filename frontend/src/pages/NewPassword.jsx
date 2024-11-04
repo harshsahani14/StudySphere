@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../components/Loader'
+import Loader from '../components/common/Loader'
 import { useState } from 'react'
 import { FiEye,FiEyeOff } from 'react-icons/fi'
 import Button from '../components/Button'

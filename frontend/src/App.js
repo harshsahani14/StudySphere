@@ -19,9 +19,12 @@ import WishList from './components/core/DashBoard/WishList';
 import PurchaseHistory from './components/core/DashBoard/PurchaseHistory';
 import Courses from './components/core/DashBoard/Courses';
 import Settings from './components/core/DashBoard/Settings';
+import { useSelector } from 'react-redux';
 
 
 function App() {
+
+  const {user} = useSelector(state=> state.profile)
   return (
     <div className="App">
       <NavBar></NavBar>
@@ -37,8 +40,15 @@ function App() {
         <Route path="/updatePassword/:id" element={<NewPassword></NewPassword>}></Route>
         <Route path="/dashBoard" element={<DashBoardPage></DashBoardPage>}>
             <Route path="myProfile" element={<MyProfile></MyProfile>}></Route>
-            <Route path="enrolledCourses" element={<EnrolledCourses/>}></Route>
-            <Route path="wishlist" element={<WishList/>}></Route>
+            {
+              user!==null && user.role === "student" ? (
+              
+              <>
+              <Route path="enrolledCourses" element={<EnrolledCourses></EnrolledCourses>}></Route>
+              <Route path="wishlist" element={<WishList></WishList>}></Route>
+              </>
+              ) : (<></>)
+            }
             <Route path="purchaseHistory" element={<PurchaseHistory/>}></Route>
             <Route path="courses" element={<Courses></Courses>}></Route>
             <Route path="settings" element={<Settings></Settings>}></Route>
