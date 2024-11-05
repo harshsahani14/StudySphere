@@ -139,7 +139,7 @@ const ContactUsForm = ({heading,para,isContactPage}) => {
         <Button isYellow={true} hasArrow={false} width={464} content={"Send message"}></Button>
         </div> */}
 
-        <button type='submit' className={` ${isContactPage ? ' w-[102.5%]' : 'w-[464px]'} h-[48px] bg-yellow rounded-md text-richblack900 flex justify-center items-center font-inter font-[500] mt-[30px] `}> Send Message</button>
+        <button type='submit' className={` ${isContactPage ? ' w-[102.5%]' : 'w-[464px]'} h-[48px] bg-yellow rounded-md text-richblack900 flex justify-center items-center font-inter font-[500] mt-[30px] hover:scale-105 duration-200`}> Send Message</button>
 
         </form>
       

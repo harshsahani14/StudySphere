@@ -44,12 +44,12 @@ const ForgotPass = () => {
 
                 <div className={` ${ emailSent ? 'w-[508px] h-[310px]' : 'w-[508px] h-[448px]'} flex flex-col gap-[36px] p-[32px]  mb-[50px] `}>
 
-                    <p className=' font-[600] text-[30px] leading-[36px] text-richblack5 text-left'>
+                    <p className='font-inter font-[600] text-[30px] leading-[36px] text-richblack5 text-left'>
                         {
                             emailSent ? 'Check email' : 'Reset your password'
                         }
                     </p>
-                    <p className=' font-[400] text-[18px] leading-[26px] text-richblack300 text-left' >
+                    <p className='font-inter font-[400] text-[18px] leading-[26px] text-richblack300 text-left' >
                         {
                             emailSent ? ` We have sent the reset email to ${email} ` : 'Have no fear. We’ll email you instructions to reset your password. If you dont have access to your email we can try account recovery'
                         }
@@ -61,14 +61,14 @@ const ForgotPass = () => {
                                 emailSent ? (<div className='invsible'></div>) : 
                                 ( 
                                     <div>
-                                        <label for="emailId" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></label>
-                                        <input type="text" id="emailId" name="emailId" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200'  onChange={(event)=> setEmail(event.target.value) } placeholder='Enter email address' required></input>
+                                        <label for="emailId" className='font-inter text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[320px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></label>
+                                        <input type="text" id="emailId" name="emailId" className='font-inter mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200'  onChange={(event)=> setEmail(event.target.value) } placeholder='Enter email address' required></input>
                                     </div>
                                 ) 
                             }
                         </div>
 
-                        <button className=' bg-yellow w-[444px] h-[48px] rounded-[8px] p-[12px] flex justify-center items-center mt-[40px] text-[16px] text-richblack900 font-[500]' onClick={clickHandler}>
+                        <button className='font-inter bg-yellow w-[444px] h-[48px] rounded-[8px] p-[12px] flex justify-center items-center mt-[40px] text-[16px] text-richblack900 font-[500]' onClick={clickHandler}>
                             {
                                 emailSent ? "Resend mail" : "Reset password"
                             }
@@ -76,7 +76,7 @@ const ForgotPass = () => {
                     </form>
                     <Link to={"/login"} className=' flex gap-[8px] items-center '>
                         <FaArrowLeftLong  className=' text-richblack5 text-[16px]'/>
-                        <p className=' text-richblack5 text-[16px] font-[500] leading-[24px]'>Back to Login</p>
+                        <p className='font-inter text-richblack5 text-[16px] font-[500] leading-[24px]'>Back to Login</p>
                     </Link>
                     
                 </div>

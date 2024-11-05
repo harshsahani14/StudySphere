@@ -10,12 +10,12 @@ const CodeBlock = ({whiteHeading1,whiteHeading2,blueHeading1,blueHeading2,para,b
                 <div className=' w-[486px] h-[284px] gap-[12px]'>
 
                     <div className=' w-[486px] h-[88px] text-left'>
-                          <h1 className=' font-semibold text-richblack5 text-[36px] leading-[44px] '>{whiteHeading1} <HighLightText text={blueHeading1}></HighLightText> <p className=' gradient-text'>{blueHeading2}</p> {whiteHeading2}</h1>
+                          <h1 className=' font-semibold text-richblack5 text-[36px] leading-[44px] font-inter '>{whiteHeading1} <HighLightText text={blueHeading1}></HighLightText> <p className='font-inter gradient-text'>{blueHeading2}</p> {whiteHeading2}</h1>
                     </div>
                     
 
                     <div className=' w-[486px] h-[72px]'>
-                        <p className='text-richblack200 text-[16px] font-[500] leading-[24px] text-md text-left mt-[12px]'>{para}</p>
+                        <p className='text-richblack200 text-[16px] font-[500] leading-[24px] text-md text-left mt-[12px] font-inter'>{para}</p>
                     </div>
                     
 
@@ -45,7 +45,7 @@ const CodeBlock = ({whiteHeading1,whiteHeading2,blueHeading1,blueHeading2,para,b
                     <div>
                     <TypeAnimation
                         sequence={[code,2000,"",2000]}
-                        style={{fontSize:'14px',whiteSpace: 'pre-line', color:"yellow", textAlign:'left',display:'inline-block',fontWeight:"700",lineHeight:"25px"}}
+                        style={{fontSize:'14px',whiteSpace: 'pre-line', color:`${isCodeBlockFirst ? "white" : "yellow"}`, textAlign:'left',display:`${isCodeBlockFirst ? "block" : "inline-block" }`,fontWeight:"700",lineHeight:"25px"}}
                         repeat={Infinity}
                         cursor={true}
                         deletionSpeed={60}

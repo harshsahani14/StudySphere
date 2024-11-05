@@ -70,11 +70,11 @@ const OtpPage = () => {
 
           <div className=' flex flex-col w-[508px] h-[370px] gap-[24px]'>
 
-            <h1 className=' text-left font-[600] text-[30px] leading-[38px] text-richblack5'>Verify email</h1>
-            <p className=' font-[600] text-[18px] leading-[26px] text-richblack100 text-left'>A verification code has been sent to you. Enter the code below</p>
+            <h1 className='font-inter text-left font-[600] text-[30px] leading-[38px] text-richblack5'>Verify email</h1>
+            <p className='font-inter font-[600] text-[18px] leading-[26px] text-richblack100 text-left'>A verification code has been sent to you. Enter the code below</p>
 
 
-            <div className=' w-full h-[48px] flex gap-[20px] mt-[15px]'>
+            <div className='font-inter w-full h-[48px] flex gap-[20px] mt-[15px]'>
             <OtpInput
                 value={otp}
                 onChange={setOtp}
@@ -103,11 +103,11 @@ const OtpPage = () => {
             <div className=' justify-between flex w-[444px] h-[28px]'>
                   <Link to={"/login"} className=' flex gap-[8px] items-center '>
                         <FaArrowLeftLong  className=' text-richblack5 text-[16px]'/>
-                        <p className=' text-richblack5 text-[16px] font-[500] leading-[24px]'>Back to Login</p>
+                        <p className='font-inter text-richblack5 text-[16px] font-[500] leading-[24px]'>Back to Login</p>
                   </Link>
                   <div className='flex gap-[8px] items-center justify-center cursor-pointer' onClick={clickHandler}>
                       <GiBackwardTime className='w-[21px] h-[21px] text-blue100 ' />
-                      <p className=' text-blue100 text-[16px] font-[500] leading-[24px]'>Resend it</p>
+                      <p className='font-inter text-blue100 text-[16px] font-[500] leading-[24px]'>Resend it</p>
                   </div>
             </div>
           </div>

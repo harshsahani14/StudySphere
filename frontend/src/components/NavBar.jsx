@@ -67,14 +67,14 @@ const NavBar = () => {
             <img src={websiteLogo} width={160} height={32} className='absolute left-[200px] top-3'></img>
         </Link>
       
-      <div className=' flex justify-end w-[476px] h-[32px] gap-[30px] '>
+      <div className=' font-inter flex justify-end w-[476px] h-[32px] gap-[30px] items-center '>
             <NavLink to={"/"} style={({isActive})=>({
                 color : isActive ? "#FFD60A" : "#F1F2FF"
             })} className=" font-[600] text-[16px] leading-[24px] ">Home</NavLink>
             
-            <div className=' flex gap-2 relative w-[74px] h-[32px] cursor-pointer group '>
+            <div className=' flex gap-2 relative w-[74px] h-[32px] cursor-pointer group items-center'>
                 <p className=' font-[600] text-[16px] leading-[24px] text-richblack5'>Catalog</p>
-                <MdOutlineKeyboardArrowDown className=' text-richblack5 absolute bottom-3 right-0' />
+                <MdOutlineKeyboardArrowDown className=' text-richblack5 absolute  right-0' />
                 
                 <div className=' invisible flex flex-col w-[280px] h-fit group-hover:visible bg-richblack5 absolute top-10 right-[-120px] opacity-0 group-hover:opacity-100 transition-all duration-300 px-[15px]  py-[15px] rounded-md z-50'>
                         <div className=' w-14 h-14 bg-richblack5  top-0 right-[99px] rotate-45 absolute   rounded-sm z-0 '></div>
@@ -142,12 +142,12 @@ const NavBar = () => {
                 
                 <div className='flex gap-3 justify-start items-center  '>
                 <Link to={"/login"}>
-                    <button className=' w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5'   >Log in</button>
+                    <button className=' font-inter w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5 hover:scale-110 duration-200'   >Log in</button>
                 </Link>
                 
                 <Link to={"/signup"}>
 
-                <button className=' w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5'> Sign up</button>
+                <button className='font-inter w-[78px] h-[40px] bg-richblack700 border-1 border-richblack600 rounded-[8px] text-richblack5 hover:scale-110 duration-200'> Sign up</button>
               </Link>
               </div>
             )

@@ -5,6 +5,7 @@
     color: transparent;
 }
 
+
 .gradient-text1 {
     background: linear-gradient(to bottom, #FF512F, #F09819);
     -webkit-background-clip: text;
@@ -21,6 +22,13 @@
 
 .gradient-text3 {
     background: linear-gradient(to right, #833AB4, #FD1D1D,#FCB045);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradient-text4 {
+    background: linear-gradient(to right, #1FA2FF, #12D8FA, #A6FFCB);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

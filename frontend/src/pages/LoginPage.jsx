@@ -47,7 +47,7 @@ const LoginPage = () => {
             dispatch(setUser({...result.data.user,img:userImg}))
             localStorage.setItem("user",JSON.stringify({...result.data.user}))
             
-            toast.success("Login successful")
+            toast.success(<p className='font-inter font-[400] text-[16px] '>Login Sucessful</p>)
             navigate("/dashboard/myProfile")
         }
         catch(e){
@@ -82,8 +82,8 @@ const LoginPage = () => {
 
                         <div className=' w-[444px] h-[100px] flex flex-col gap-[12px]'
                         >
-                                <h1 className=' text-richblack5 font-[600] text-[30px] leading-[38px] text-left'> Welcome Back</h1>
-                                <p className='font-[400] text-[18px] leading-[26px] text-richblack300 text-left'>  
+                                <h1 className=' font-inter text-richblack5 font-[600] text-[30px] leading-[38px] text-left'> Welcome Back</h1>
+                                <p className=' font-inter font-[400] text-[18px] leading-[26px] text-richblack300 text-left'>  
                                     {
                                         userType === 'student' ? `Build skills for today, tomorrow, and beyond.` : 'Discover your passions.'
                                     }
@@ -93,21 +93,21 @@ const LoginPage = () => {
                                 </p>
                             </div>
 
-                            <div className=' flex gap-[5px] w-[230px] h-[44px] bg-richblack800 p-[4px] rounded-[500px] shadow-toggle '>
+                            <div className=' flex gap-[5px] w-[230px] h-[44px] bg-richblack800 p-[4px] rounded-[500px] shadow-toggle font-inter '>
                                 <div className={` w-[97px] h-[36px] rounded-[100px] py-[6px] px-[18px] font-[500] text-[16px] leading-[24px] text-richblack5 cursor-pointer duration-200 ${userType=='student' ? 'bg-richblack900' : ''} ease-in-out`} onClick={()=> {setUserType("student")} }> Student</div>
                                 <div className={`w-[120px] h-[36px] rounded-[100px] px-[18px] py-[6px] font-[500] text-[16px] leading-[24px] text-richblack5 cursor-pointer ${ userType=='instructor' ? 'bg-richblack900' : ''} duration-200 ease-in-out text-center`} onClick={()=>{setUserType("instructor")}}> Instructor</div>
                             </div>
 
                             <form >
-                                <label for="emailId" className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></label>
-                                <input type="text" id="email" name="email" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200' onChange={changeHandler} placeholder='Enter email address' required></input><br></br><br></br>
-                                <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Password <div className='ml-[5px] text-pink200'>*</div></div>
+                                <label for="emailId" className=' font-inter text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[330px]  flex mb-[10px]'>Email Address <div className='ml-[5px] text-pink200'>*</div></label>
+                                <input type="text" id="email" name="email" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 font-inter' onChange={changeHandler} placeholder='Enter email address' required></input><br></br><br></br>
+                                <div className=' font-inter text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px]'>Password <div className='ml-[5px] text-pink200'>*</div></div>
                                 <div className=' relative h-[102px] mb-[-56px]'>
-                                        <input type={`${ showPass ? 'text' : 'password' }`} id="password" name="password" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' onChange={changeHandler}  placeholder='Enter Password' required></input>
+                                        <input type={`${ showPass ? 'text' : 'password' }`} id="password" name="password" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px] font-inter' onChange={changeHandler}  placeholder='Enter Password' required></input>
                                         {
                                             showPass ? (<FiEyeOff className=' z-[20] absolute right-3 top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(false)}}/>) : (<FiEye className='z-[20] absolute right-3 top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(true)}}></FiEye>)
                                         }
-                                        <Link to={'/forgotpassword'} className='absolute font-[600] text-[12px] leading-[20px]  text-blue200 bottom-7 right-0 cursor-pointer'>Forgot password</Link>
+                                        <Link to={'/forgotpassword'} className=' font-inter absolute font-[600] text-[12px] leading-[20px]  text-blue200 bottom-7 right-0 cursor-pointer'>Forgot password</Link>
                                         
                                 </div><br></br><br></br>
                                 <Button content={'Sign in'} isYellow={true} hasArrow={false} width={444}  onClick={clickHandler}></Button>
@@ -119,10 +119,8 @@ const LoginPage = () => {
 
 
                             <div className=' w-[600px] h-[550px] relative'>
-                            <img src={ `${ userType==='student' ? loginPagePhoto1 : loginPagePhoto2}`  } className={` ${ userType === 'student' ? 'w-[544px] h-[504px]' : 'w-[508px] h-[528px]' }  absolute z-20 right-12`}></img>
-                            <img src={loginPageBg} className={` absolute z-10  ${
-                                userType === 'student' ? 'w-[544px] h-[504px] bottom-[25px] right-6' : 'w-[518px] h-[528px] top-5 right-6'
-                            }`}></img>
+                            <img src={ `${ userType==='student' ? loginPagePhoto1 : loginPagePhoto2}`  } className={`  w-[558px] h-[508px]  absolute z-20 right-12`}></img>
+                            <img src={loginPageBg} className={` absolute z-10 w-[558px] h-[508px] bottom-5 right-6  `}></img>
                             </div>
                  </div>   
             )

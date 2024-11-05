@@ -25,10 +25,11 @@ const AboutusPage = () => {
                 <p className=' font-inter font-[500] text-[16px] leading-[24px] text-center text-richblack300'>Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
               </div>
           </div>
-          <div className=' w-[1200px] h-[311px] gap-[24px] flex '>
-            <img src={AboutUsImg1} className=' w-[384px] h-[311px]'></img>
-            <img src={AboutUsImg2} className=' w-[384px] h-[311px]'></img>
-            <img src={AboutUsImg3} className=' w-[384px] h-[311px]'></img>
+          <div className=' w-[1200px] h-[311px] gap-[24px] flex relative '>
+          <div className=' bg-gradient-to-r from-[#E65C00] to-[#F9D423] blur-[68px] opacity-[0.33] w-[372.95px] h-[257.05px] rounded-[500px] absolute bottom-[130px]  left-[400px] z-40 '></div>
+            <img src={AboutUsImg1} className='z-50 w-[384px] h-[311px]'></img>
+            <img src={AboutUsImg2} className='z-50 w-[384px] h-[311px]'></img>
+            <img src={AboutUsImg3} className='z-50 w-[384px] h-[311px]'></img>
           </div>
 
       </div>

@@ -62,15 +62,15 @@ const NewPassword = () => {
         loading ? (<Loader></Loader>) : (
 
             <div className=' w-[508px] h-[586px] flex flex-col p-[32px] gap-[24px]'>
-                <p className=' font-[600] text-[30px] leading-[38px] text-richblack5 text-left'>Choose new password</p>
-                <div className='w-[444px] h-[52px] font-[400] text-richblack300 text-[18px] leading-[26px] text-left'>Almost done. Enter your new password and youre <br></br>all set.</div>
+                <p className='font-inter font-[600] text-[30px] leading-[38px] text-richblack5 text-left'>Choose new password</p>
+                <div className=' font-inter w-[444px] h-[52px] font-[400] text-richblack300 text-[18px] leading-[26px] text-left'>Almost done. Enter your new password and youre <br></br>all set.</div>
 
                 <form className=' mt-[15px] '>
 
                 <div className='flex flex-col '>
-                        <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px] w-full'>New Password <div className='ml-[5px] text-pink200'>*</div></div>
+                        <div className='font-inter text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px] w-full'>New Password <div className='ml-[5px] text-pink200'>*</div></div>
                         <div className=' relative h-[102px] mb-[-56px]'>
-                        <input type={`${ showPass ? 'text' : 'password' }`} id="newPassword" name="newPassword" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Enter new password' onChange={changeHandler} required></input>
+                        <input type={`${ showPass ? 'text' : 'password' }`} id="newPassword" name="newPassword" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px] font-inter' placeholder='Enter new password' onChange={changeHandler} required></input>
                         {
                             showPass ? (<FiEyeOff className=' z-[20] right-3 absolute  top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowPass(false)}}/>) : (<FiEye className='z-[20] absolute right-3 top-4 text-richblack200 cursor-pointer ' onClick={()=>{setShowPass(true)}}></FiEye>)
                         }
@@ -78,9 +78,9 @@ const NewPassword = () => {
                 </div>
                     
                     <div className=' flex flex-col mt-[30px]  '>
-                        <div className=' text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px] w-full'>Confirm new password <div className='ml-[5px] text-pink200'>*</div></div>
+                        <div className='font-inter text-left font-[400] text-[14px] leading-[22px] text-richblack5 mr-[340px]  flex mb-[10px] w-full'>Confirm new password <div className='ml-[5px] text-pink200'>*</div></div>
                         <div className=' relative h-[102px] mb-[-56px] '>
-                        <input type={`${ showConfirmPass ? 'text' : 'password' }`} id="confirmPassword" name="confirmPassword" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px]' placeholder='Confirm new password' onChange={changeHandler} required ></input>
+                        <input type={`${ showConfirmPass ? 'text' : 'password' }`} id="confirmPassword" name="confirmPassword" className='mr-[200px] w-[444px] h-[48px] rounded-[8px] p-[12px] gap-[12px] bg-richblack800 shadow-toggle text-richblack200 mb-[10px] absolute z-[10] left-[1px] font-inter' placeholder='Confirm new password' onChange={changeHandler} required ></input>
                         {
                             showConfirmPass ? (<FiEyeOff className=' z-[20] absolute right-3 top-4 text-richblack200 cursor-pointer' onClick={()=>{setShowConfirmPass(false)}}/>) : (<FiEye className='z-[20] absolute right-3 top-4  text-richblack200 cursor-pointer'  onClick={()=>{setShowConfirmPass(true)}}></FiEye>)
                         }
@@ -98,7 +98,7 @@ const NewPassword = () => {
                     
                 </form>
 
-                <Link to={"/login"} className=' flex gap-[8px] items-center '>
+                <Link to={"/login"} className=' font-inter flex gap-[8px] items-center '>
                         <FaArrowLeftLong  className=' text-richblack5 text-[16px]'/>
                         <p className=' text-richblack5 text-[16px] font-[500] leading-[24px]'>Back to Login</p>
                 </Link>
