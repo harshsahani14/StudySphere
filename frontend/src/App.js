@@ -20,6 +20,8 @@ import PurchaseHistory from './components/core/DashBoard/PurchaseHistory';
 import Courses from './components/core/DashBoard/Courses';
 import Settings from './components/core/DashBoard/Settings';
 import { useSelector } from 'react-redux';
+import AddCourseIndex from './components/core/DashBoard/AddCourse/AddCourseIndex';
+import InstructorDashBoard from './components/core/DashBoard/InstructorDashBoard';
 
 
 function App() {
@@ -51,7 +53,11 @@ function App() {
               <Route path="enrolledCourses" element={<EnrolledCourses></EnrolledCourses>}></Route>
               <Route path="wishlist" element={<WishList></WishList>}></Route>
               </>
-              ) : (<></>)
+              ) : (<>
+                  <Route path="addCourse" element={<AddCourseIndex></AddCourseIndex>}></Route>
+                  <Route path="course" element={<WishList></WishList>}></Route>
+                  <Route path="instructorDashboard" element={<InstructorDashBoard></InstructorDashBoard>}></Route>
+              </>)
             }
             <Route path="purchaseHistory" element={<PurchaseHistory/>}></Route>
             <Route path="courses" element={<Courses></Courses>}></Route>
