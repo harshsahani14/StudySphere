@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getItemWithExpiry } from "../apis/localStorage";
 
 const initialState = {
 
     // Issue while reloading page cannot fetch user object
-    user : localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
+    user : getItemWithExpiry("user"),
     showLogOutModal:false,
     loading:false,
 }

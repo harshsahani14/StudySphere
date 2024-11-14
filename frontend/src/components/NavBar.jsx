@@ -127,7 +127,7 @@ const NavBar = () => {
                   <img src={user.img} className=' w-[29.82px] h-[29.82px] rounded-full cursor-pointer'>
                   </img>
                   <FaCaretDown className=' w-[15px] h-[15px] text-richblack5' />
-                  <div className=' group-hover:visible invisible w-fit h-fit flex flex-col bg-richblack800 rounded-md opacity-0 group-hover:opacity-100 absolute bottom-[-95px] left-[-100px] p-[5px]   '>
+                  <div className=' group-hover:visible invisible w-fit h-fit flex flex-col bg-richblack800 rounded-md opacity-0 group-hover:opacity-100 absolute bottom-[-95px] left-[-100px] p-[5px] duration-200  '>
                     <div className=' flex justify-center items-center w-[150px] h-[30px] hover:bg-richblack600 p-[20px] rounded-md gap-1'>
                       <RiDashboard2Line className=' w-[16px] h-[16px] text-richblack5'></RiDashboard2Line>
                       <Link to={'/dashboard/myProfile'} className=' text-richblack5 text-[16px] font-[500]' >DashBoard</Link>

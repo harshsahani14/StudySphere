@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getItemWithExpiry } from "../apis/localStorage";
 
 const initialState = {
-    token : localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null,
+    token : getItemWithExpiry("token"),
     loading:false,
     signUpDetails:null
 }
