@@ -24,7 +24,7 @@ const RenderProcess = () => {
   return (
     <div className=' '>
       {/* Steps */}
-        <div className='w-[665px] gap-0 h-[68px] flex ml-[65px] mt-[25px]'>
+        <div className='w-[665px] gap-[-1px] h-[68px] flex ml-[65px] mt-[25px] mx-auto'>
 
         {
             steps.map( (item) => (
