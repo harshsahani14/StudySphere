@@ -6,11 +6,15 @@ exports.isvalidToken = async (req,res,next) => {
 
     try{
         // Fetch token
-        const token = req.cookies.token || req.body.token || req.header("Authorization").replace("Bearer ","");
+        const token = req.cookies.token || req.body.token || req.header("Authorization").replace("Bearer ",""); 
+
         // check if it exsits
+
+        
+
         if(!token){
-            return res.status(401).json({
-                suncess:false,
+            return res.status(400).json({
+                success:false,
                 message:"Token not found"
             })
         }
@@ -25,8 +29,8 @@ exports.isvalidToken = async (req,res,next) => {
         }
         catch(e){
             return res.status(401).json({
-                suncess:false,
-                message:"Invalid token"
+                success:false,
+                message:"Token is invalid",
             })
         }
         

@@ -41,14 +41,15 @@ const LoginPage = () => {
 
 
             
-            setItemWithExpiry("token",JSON.stringify(result.data.token),86400000)
+            localStorage.setItem("token", result.data.token);
+            // setItemWithExpiry("token",JSON.stringify(result.data.token),86400000)
             dispatch(setToken(JSON.stringify(result.data.token)))
 
             const userImg = result.data.user.img ? result.data.user.img : `https://api.dicebear.com/5.x/initials/svg?seed=${result.data.user.firstName} ${result.data.user.firstName}`
 
             dispatch(setUser({...result.data.user,img:userImg}))
-            // localStorage.setItem("user",JSON.stringify({...result.data.user}))
-            setItemWithExpiry("user",{...result.data.user},86400000)
+            localStorage.setItem("user",JSON.stringify({...result.data.user}))
+            // setItemWithExpiry("user",{...result.data.user},86400000)
             
             toast.success(<p className='font-inter font-[400] text-[16px] '>Login Sucessful</p>)
             navigate("/dashboard/myProfile")

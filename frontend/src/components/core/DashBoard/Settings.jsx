@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import { apiCall } from '../../../apis/apiCall'
 import { profileApiURL } from '../../../apis/apiUrl'
 import { setUser } from '../../../slices/profileSlice'
+import axios from 'axios'
 
 const Settings = () => {
 
@@ -21,17 +22,21 @@ const Settings = () => {
     const toastId = toast.loading("Loading")
     try{
 
-        console.log(img)
 
         const formData = new FormData()
         formData.append('displayPicture', img);
-        formData.append('token', token);
+        console.log(img)
+        console.log(token)
         
-        const result = await apiCall("PUT",profileApiURL.updateDisplayPicture,formData,{
-          
-            'Content-Type': 'multipart/form-data'
-          }
-        );
+        
+        const result = await axios.put(profileApiURL.updateDisplayPicture,formData,{
+          headers : {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}` 
+          },
+          withCredentials: true
+        },
+        )
 
         dispatch(setUser({...user,img}))
 
@@ -50,7 +55,7 @@ const Settings = () => {
     toast.dismiss(toastId)
   }
   return (
-    <div className='w-full h-[679px] bg-richblack900'>
+    <div className='w-full h-[679px] bg-richblack900 overflow-y-scroll'>
       <Heading heading={"Edit Profile"} title={"Settings"}></Heading>
       <div className='w-[792px] h-[950px] flex flex-col gap-[44px] mx-auto'>
         <div className='w-[792px] h-[152px] rounded-[8px] bg-richblack800 flex gap-[19px] p-[24px] items-center justify-start'>
@@ -58,14 +63,14 @@ const Settings = () => {
         <div className='flex flex-col gap-[20px]'>
           <p className='font-[500] font-inter text-richblack5 text-[14px]'>Change Profile picture</p>
           <div className='flex  justify-start'>
-                <button  className={` bg-yellow w-[100px] h-[42px] rounded-[8px] py-[12px] px-[24px] text-md text-[16px] font-[500] flex justify-center items-center gap-2  cursor-pointer `} >
-                  Change
+                <button  className={` bg-yellow w-[100px] h-[42px] rounded-[8px] py-[12px] px-[24px] text-md text-[16px] font-[500] flex justify-center items-center gap-2  cursor-pointer hover:scale-110 duration-200 `} onClick={()=>document.getElementById('fileInput').click()} >
+                  Select
                 
                 </button>
               
-                <input onChange={(e)=> setImg(e.target.value)}  type="file" id='fileInput' name='avatar' className={` invisible w-[0px]`}  accept=".png,.jpg,.jpeg"  ></input>
+                <input onChange={(e)=> setImg(e.target.files[0])}  type="file" id='fileInput' name='avatar' className={` invisible w-[0px]`}  accept=".png,.jpg,.jpeg"  ></input>
                   
-                <button className='bg-richblack700 w-[100px] h-[42px] rounded-[8px] py-[12px] px-[24px] text-md text-[16px] font-[500] flex justify-center items-center gap-2  cursor-pointer text-richblack5 shadow-button ml-[20px]  'onClick={()=>document.getElementById('fileInput').click()}>Remove</button>
+                <button className='bg-richblack700 w-[100px] h-[42px] rounded-[8px] py-[12px] px-[24px] text-md text-[16px] font-[500] flex justify-center items-center gap-2  cursor-pointer text-richblack5 shadow-button ml-[20px] hover:scale-110 duration-200 ' onClick={changeProfileImg}>Change</button>
                 
           </div>
         </div>

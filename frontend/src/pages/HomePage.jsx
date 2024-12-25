@@ -73,7 +73,8 @@ const HomePage = () => {
                 
 
                 <h1 className=' text-center text-[36px] text-richblack5 font-semibold font-inter'>Empower Your Future with <HighLightText text={"Coding Skills"}></HighLightText></h1>
-                <p className=' text-center text-md font-[500] text-[16px] leading-[24px] text-richblack200 font-inter'>With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.</p>
+
+                <p className=' text-center font-medium text-[16px] leading-[24px] text-richblack200 font-inter '>With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.</p>
 
 
                 <div className='w-[308px] h-[48px] flex gap-[24px] '> 
@@ -90,11 +91,11 @@ const HomePage = () => {
             
             
 
-            <video className='w-[950px] h-[1035px]  mx-auto mt-[-148px] z-20 relative'  muted loop autoPlay>
+            <video className='w-[1000px] h-[1035px]  mx-auto mt-[-148px] z-20 relative'  muted loop autoPlay>
                     <source src={homePageVideo1} type="video/mp4"/>
             </video>
-            <img  className='  w-[950px] h-[500px] absolute top-[560px] left-[300px] z-10'   src={whiteBg}></img>
-            <div className='bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4] w-[992px] h-[295px] opacity-40 absolute rounded-[200px] blur-[68px] top-[500px] left-[300px] z-0'></div>
+            
+            <div className='bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4] w-[1092px] h-[565px] opacity-40 absolute rounded-[200px] blur-[68px] top-[500px] left-[240px] z-0'></div>
 
             
             <CodeBlock isCodeBlockFirst={false} whiteHeading1={"Unlock your"} blueHeading1={"coding potential"} whiteHeading2={"with our online courses"} para={'Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you.'} button1={"Try it yourself"} button2={'Learn More'} button1Width={179} button2Width={135} code={code1} shadowColor1={'#8A2BE2'}shadowColor2={'#FFA500'} shadowColor3={'#F8F8FF'}></CodeBlock>
@@ -109,6 +110,7 @@ const HomePage = () => {
                 <p className=' text-[36px] font-[600] leading-[44px] text-center text-richblack5 font-inter'>Unlock the <HighLightText text={"Power of Code"}></HighLightText></p>
                 <p className=' text-richblack300 text-center text-[16px] font-[500] mt-[10px]font-inter'>Learn to Build Anything You Can Imagine</p>
                 <div className=' w-[1096px] h-[300px] gap-[36px] flex mx-auto mt-[60px] relative '>
+                    
                     <HomepageBox hasShadow={true} heading={'Learn HTML'} para={'This course covers the basic concepts of HTML including creating and structuring web pages, adding text, links, images, and more.'}></HomepageBox>
                     <HomepageBox hasShadow={false} heading={"Learn CSS"} para={" This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques"}></HomepageBox>
                     <HomepageBox hasShadow={false} heading={"Responsive Web design"} para={"This course teaches responsive web design techniques, allowing web pages to adapt to different devices and screen sizes"}></HomepageBox>
@@ -136,7 +138,7 @@ const HomePage = () => {
                 <div className='flex flex-col gap-[12px] w-[594px]'>
 
                     <div className=' w-[594px] h-[48px]'>
-                    <p className=' text-[16px] text-richblack600 leading-[24px] font-[500] text-left font-inter'>The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.</p>
+                    <p className=' text-[16px] text-richblack600 leading-[24px] font-[500] text-left font-inter'>The modern StudySphere is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.</p>
                     </div>
 
                     <div className=' w-[594px] h-[84px] pt-[36px]'>

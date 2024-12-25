@@ -4,7 +4,7 @@ import { getItemWithExpiry } from "../apis/localStorage";
 const initialState = {
 
     // Issue while reloading page cannot fetch user object
-    user : getItemWithExpiry("user"),
+    user : JSON.parse(localStorage.getItem('user')),
     showLogOutModal:false,
     loading:false,
 }

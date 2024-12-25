@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-
+import CourseBuilderForm from './CourseBuilderForm';
+import CourseInfoForm from './CourseInfoForm';
+import CoursePublishForm from './CoursePublishForm';
 import SingleStep from './SingleStep';
 const RenderProcess = () => {
 
@@ -24,7 +26,7 @@ const RenderProcess = () => {
   return (
     <div className=' '>
       {/* Steps */}
-        <div className='w-[665px] gap-[-1px] h-[68px] flex ml-[65px] mt-[25px] mx-auto'>
+        <div className=' w-[665px] gap-[-1px] h-[68px] flex ml-[65px] mt-[25px] mx-auto'>
 
         {
             steps.map( (item) => (
@@ -32,6 +34,10 @@ const RenderProcess = () => {
             ) )
         }
         </div>
+
+        {step == 1  && <CourseInfoForm></CourseInfoForm>}
+        {step == 2  && <CourseBuilderForm></CourseBuilderForm>}
+        {step == 3  && <CoursePublishForm></CoursePublishForm>}
     </div>
   )
 }

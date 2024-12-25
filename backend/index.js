@@ -16,10 +16,10 @@ const dbConnect = require("./config/database");
 const cookieParser = require("cookie-parser");
 const { cloudinarySetup } = require("./config/cloudDb");
 const cors = require("cors");
-const dotenv = require("dotenv");
+
 const fileUpload = require("express-fileupload");
 
-dotenv.config();
+require("dotenv").config();
 
 // Database connect
 dbConnect();
@@ -31,6 +31,7 @@ server.use(
   cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
+
   })
 );
 server.use(

@@ -2,9 +2,10 @@ import React from 'react'
 import { FaChevronLeft } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import RenderProcess from './RenderProcess';
+
 const AddCourseIndex = () => {
   return (
-    <div className=' h-[679px] w-full bg-richblack900'>
+    <div className='  w-full bg-richblack900  overflow-y-scroll   '>
       
       <div className='w-[689px] h-[70px] py-[24px] pl-[24px] pr-[120px] flex items-center gap-[10px] top-[57px] left-[223px]'>
 
@@ -16,7 +17,7 @@ const AddCourseIndex = () => {
 
       <RenderProcess></RenderProcess>
 
-      <div className='w-[384px] h-[390px] rounded-[8px] border-[1px] p-[24px] flex flex-col gap-[24px] bg-richblack700 ml-[806px] mt-[-110px]'>
+      <div className=' absolute w-[384px] h-[390px] rounded-[8px] border-[1px] p-[24px] flex flex-col gap-[24px] bg-richblack800 top-[70px] right-[100px]  '>
         <p className=' font-inter font-[600] text-richblack5 text-[18px] leading-[26px]'>⚡Course Upload Tips</p>
 
         <div className=' flex flex-col gap-[11px]'>
