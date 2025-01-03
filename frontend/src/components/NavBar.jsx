@@ -152,7 +152,7 @@ const NavBar = () => {
             {
 
                 
-               (user!==null && user.role === "student" ) && (<BsCart3 className='relative w-[20px] h-[20px]  text-richblack5 cursor-pointer   '>
+               (user!==null && user.role === "student" ) && (<BsCart3 onClick={()=>navigate('/dashboard/wishlist')}className='relative w-[20px] h-[20px]  text-richblack5 cursor-pointer   '>
 
                   {
                       totalItems>0 ? (<div>{totalItems}</div>) : (<div className=' hidden'></div>)

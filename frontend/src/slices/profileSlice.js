@@ -7,6 +7,7 @@ const initialState = {
     user : JSON.parse(localStorage.getItem('user')),
     showLogOutModal:false,
     loading:false,
+    showDeleteAccModal:false,
 }
 
 const profileSlice = createSlice({
@@ -21,11 +22,14 @@ const profileSlice = createSlice({
         },
         setLoading(state,value){
             state.loading=value.payload
+        },
+        setshowDeleteAccModal(state,value){
+            state.showDeleteAccModal=value.payload
         }
         
     }
 })
 
-export const {setUser,setshowLogOutModal,setLoading} = profileSlice.actions;
+export const {setUser,setshowLogOutModal,setLoading,setshowDeleteAccModal} = profileSlice.actions;
 export default profileSlice.reducer;
 

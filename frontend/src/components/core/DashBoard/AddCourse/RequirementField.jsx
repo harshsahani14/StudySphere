@@ -70,9 +70,7 @@ const RequirementField = ({name,register,errors,setValue,getValues}) => {
             )  
         }
 
-        {
-            errors.name && <span className=''>Course {name} is needed</span>
-        }
+        
         
     </div>
   )

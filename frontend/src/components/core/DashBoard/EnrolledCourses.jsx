@@ -60,7 +60,13 @@ const EnrolledCourses = () => {
                     {
                         courses.length == 0 ? (<div className='h-full w-[1162px] flex justify-center items-center '>
                           <p className=' text-richblack5 text-[30px] leading-[38px] font-inter font-[500] mt-[180px]'> You are not enrolled in any course</p>
-                          </div>) : (<div></div>)
+                          </div>) : (<div>
+
+                            <div className='w-[295px] h-[44px]  rounded-[500px] flex gap-[5px] bg-richblack800 items-center  p-[4px] shadow-toggle '> 
+                            
+
+                            </div>
+                          </div>)
                     }
                     </div>
                     

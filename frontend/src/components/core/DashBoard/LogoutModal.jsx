@@ -6,6 +6,8 @@ import toast from 'react-hot-toast';
 import { setToken } from '../../../slices/authSlice';
 import { setUser } from '../../../slices/profileSlice';
 import { useNavigate } from 'react-router';
+
+
 const customStyles = {
     content: {
       top: '50%',
@@ -46,7 +48,7 @@ const LogoutModal = () => {
     <div>
     <Modal
         isOpen={showLogOutModal}
-        onRequestClose={()=>dispatch(setshowLogOutModal(false))}
+        
         
         style={{
             overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },  // Styles for the modal overlay
@@ -56,8 +58,8 @@ const LogoutModal = () => {
       >
         <h1 className=' text-richblack5 text-[24px] font-inter font-[600]'>Are you sure?</h1>
         <p className=' text-richblack300 font-inter font-[400] text-[14px] mt-[15px] '>You will be logged out of your account</p>
-        <button className='bg-yellow w-[125px] h-[40px] rounded-md mt-10 font-inter text-richblack900 font-[500]' onClick={clickHandler}>Logout</button>
-        <button className='bg-richblack600 w-[125px] h-[40px] rounded-md mt-10 font-inter text-richblack5 font-[500] ml-2' onClick={()=>dispatch(setshowLogOutModal(false))}>Cancel</button>
+        <button className='bg-yellow w-[125px] h-[40px] rounded-md mt-10 font-inter text-richblack900 font-[500] hover:scale-105 duration-200' onClick={clickHandler}>Logout</button>
+        <button className= ' hover:scale-105 duration-200  bg-richblack600 w-[125px] h-[40px] rounded-md mt-10 font-inter text-richblack5 font-[500] ml-2' onClick={()=>dispatch(setshowLogOutModal(false))}>Cancel</button>
       </Modal>
     </div>
   )
